@@ -2,6 +2,8 @@ const express = require("express");
 
 const {connection} = require("./configs/db");
 
+const {userRouter} = require("./routes/user.route");
+
 const app = express();
 
 app.use(express.json());
@@ -10,7 +12,7 @@ app.get("/",(req,res)=>{
     res.send("Fashionology Backend");
 })
 
-
+app.use("/users",userRouter);
 
 
 
