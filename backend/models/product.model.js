@@ -7,7 +7,7 @@ const productSchema = mongoose.Schema({
     sizes:{type:Array,required:true},
     quantity:{type:Number,required:true},
     color:{type:String,required:true},
-    mainCategory:{type:String,required:true},
+    mainCategory:{type:String,enum:["clothing","shoes","accessories","beauty & wellness"],required:true},
     subCategory:{type:String,required:true},
     images:{type:Array,required:true},
     brand:{type:String,required:true},
