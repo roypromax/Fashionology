@@ -3,6 +3,7 @@ const express = require("express");
 const {connection} = require("./configs/db");
 
 const {userRouter} = require("./routes/user.route");
+const { productRouter } = require("./routes/product.route");
 
 const app = express();
 
@@ -14,7 +15,7 @@ app.get("/",(req,res)=>{
 
 app.use("/users",userRouter);
 
-
+app.use("/products",productRouter);
 
 app.listen(8080,async()=>{
     try {

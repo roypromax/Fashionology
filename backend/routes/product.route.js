@@ -17,8 +17,14 @@ productRouter.get("/", async(req,res)=>{
 
 productRouter.use(auth);
 
-productRouter.post("/add",(req,res)=>{
-
+productRouter.post("/add",async(req,res)=>{
+    try {
+        const newProduct = new ProductModel(req.body);
+        await newProduct.save();
+        res.status(200).send({msg:"Product has been added"}).json();
+    } catch (error) {
+        res.status(400).send({err:error}).json();
+    }
 })
 
 module.exports = {productRouter}
