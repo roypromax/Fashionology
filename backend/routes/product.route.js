@@ -7,8 +7,15 @@ const {ProductModel} = require("../models/product.model");
 const productRouter = express.Router();
 
 productRouter.get("/", async(req,res)=>{
+    const {mainCategory,subCategory,page,limit} = req.query;
+    const query = {};
+
+    if(mainCategory) query.mainCategory = mainCategory;
+
+    if(subCategory) query.subCategory = subCategory;
+
     try {
-        const products = await ProductModel.find();
+        const products = await ProductModel.find(query).skip((page-1)*limit).limit(+limit);
         res.status(200).send(products).json();
     } catch (error) {
         res.status(400).send({err:error}).json();
