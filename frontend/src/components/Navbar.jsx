@@ -136,6 +136,9 @@ export const Navbar = () => {
           </div>
         </Box>
       </Box>
+      <Box>
+        
+      </Box>
     </div>
   );
 };
