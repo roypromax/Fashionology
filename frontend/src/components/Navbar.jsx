@@ -8,6 +8,7 @@ import {
   Input,
   InputGroup,
   InputRightAddon,
+
   Tab,
   TabIndicator,
   TabList,
@@ -20,6 +21,7 @@ import logo from "../assets/logo.png";
 import { SlArrowDown, SlGlobeAlt } from "react-icons/sl";
 import { BiSearch, BiUser } from "react-icons/bi";
 import { BsHandbag } from "react-icons/bs";
+import { Link } from "react-router-dom";
 export const Navbar = () => {
   // const responsive = {
   //   superLargeDesktop: {
@@ -56,22 +58,36 @@ export const Navbar = () => {
         </Carousel>
       </div> */}
       <Box w="100%" p={4} color="rgb(22,122,146)" fontFamily={"inherit"}>
-        <Box style={{ display: "flex", gap: "20px", justifyContent: "right", height:"10px" , alignItems:"center" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "5px"}}>
+        <Box
+          style={{
+            display: "flex",
+            gap: "20px",
+            justifyContent: "right",
+            height: "10px",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
             <SlGlobeAlt style={{ fontSize: "25px" }} />
             English ($)
             <SlArrowDown />
           </div>
           <Button
             _hover={{ color: "black" }}
-            style={{ display: "flex", alignItems: "center", gap: "5px",background:"none",fontFamily:"" }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "5px",
+              background: "none",
+              fontFamily: "",
+            }}
           >
             <BiUser style={{ fontSize: "25px" }} /> Sign In / Sign Up
           </Button>
         </Box>
       </Box>
       <Box style={{ display: "flex", alignItems: "center" }}>
-        <Box style={{paddingLeft:"35px"}}>
+        <Box style={{ paddingLeft: "35px" }}>
           {" "}
           <Tabs position="relative" variant="unstyled">
             <TabList>
@@ -136,8 +152,63 @@ export const Navbar = () => {
           </div>
         </Box>
       </Box>
-      <Box>
-        
+      <Box
+        style={{
+          boxShadow:
+            " rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
+        }}
+      >
+        <Tabs
+          style={{
+            margintop: "8px",
+            fontFamily: "sans-serif",
+            height: "60px",
+            display: "flex",
+          }}
+        >
+          <TabList
+            // style={{
+            //   display: "flex",
+            //   fontSize: "12px",
+            //   alignItems: "center",
+            //   height: "60px",
+            // }}
+          >
+            <Tab textDecoration={"none"} fontSize={"small"}>
+              <Link to=""> New!</Link>
+            </Tab>
+            <Tab fontSize={"small"}>
+              <Link to=""> Gift for Mom</Link>
+            </Tab>
+            <Tab fontSize={"small"}>
+              <Link to=""> Dresses</Link>
+            </Tab>
+            <Tab fontSize={"small"}>
+              <Link to="/cloths"> Clothing</Link>
+            </Tab>
+            <Tab fontSize={"small"}>
+              <Link to="/shoes"> Shoes</Link>
+            </Tab>
+            <Tab fontSize={"small"}>
+              <Link to=""> Accessories</Link>
+            </Tab>
+            <Tab fontSize={"small"}>
+              <Link to=""> Home & Furniture</Link>
+            </Tab>
+            <Tab fontSize={"small"}>
+              <Link to=""> Beauty & Wellness</Link>
+            </Tab>
+            <Tab fontSize={"small"}>
+              <Link to=""> Garden & Outdoor</Link>
+            </Tab>
+            <Tab fontSize={"small"}>
+              <Link to=""> Weddings</Link>
+            </Tab>
+            <Tab fontSize={"small"}>
+              <Link to=""> Sale</Link>
+            </Tab>
+          </TabList>
+        </Tabs>
       </Box>
     </div>
   );
