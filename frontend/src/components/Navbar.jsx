@@ -1,6 +1,5 @@
 import React from "react";
 
-// import Carousel from "react-multi-carousel";
 import {
   Box,
   Button,
@@ -8,13 +7,19 @@ import {
   Input,
   InputGroup,
   InputRightAddon,
-
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuGroup,
+  MenuItem,
+  MenuList,
   Tab,
   TabIndicator,
   TabList,
   // TabPanel,
   // TabPanels,
   Tabs,
+  useDisclosure,
 } from "@chakra-ui/react";
 import fashionoLogy from "../assets/fashionology.jpeg";
 import logo from "../assets/logo.png";
@@ -22,27 +27,17 @@ import { SlArrowDown, SlGlobeAlt } from "react-icons/sl";
 import { BiSearch, BiUser } from "react-icons/bi";
 import { BsHandbag } from "react-icons/bs";
 import { Link } from "react-router-dom";
-export const Navbar = () => {
-  // const responsive = {
-  //   superLargeDesktop: {
-  //     // the naming can be any, depends on you.
-  //     breakpoint: { max: 4000, min: 3000 },
-  //     items: 1,
-  //   },
-  //   desktop: {
-  //     breakpoint: { max: 3000, min: 1024 },
-  //     items: 1,
-  //   },
-  //   tablet: {
-  //     breakpoint: { max: 1024, min: 464 },
-  //     items: 1,
-  //   },
-  //   mobile: {
-  //     breakpoint: { max: 464, min: 0 },
-  //     items: 1,
-  //   },
-  // };
+import { Navigation, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Keyboard, Mousewheel } from "swiper";
+import "swiper/css";
+import "swiper/css/scrollbar";
+import { LoginButton } from "./LoginButton";
+import { RegisterButton } from "./RegisterButton";
 
+
+export const Navbar = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <div
       style={{
@@ -50,13 +45,64 @@ export const Navbar = () => {
           " rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
       }}
     >
-      {/* <div>
-        <Carousel responsive={responsive}>
-          <p style={{ background: "rgb(245,151,148)" }}>hello</p>
-          <p style={{ background: "rgb(243, 101, 96)" }}>hello2</p>
-          <p style={{ background: "rgb(245,151,148)" }}>hello3</p>
-        </Carousel>
-      </div> */}
+      <div>
+        <Swiper
+          loop={true}
+          cssMode={true}
+          navigation={true}
+          mousewheel={true}
+          keyboard={true}
+          slidesPerView={1}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Navigation, Autoplay, Pagination, Mousewheel, Keyboard]}
+          className="mySwiper"
+          style={{ display: "flex", height: "29px" }}
+        >
+          <SwiperSlide
+            style={{ textAlign: "center", backgroundColor: "rgb(22,122,146)" }}
+          >
+            <span style={{ fontFamily: "cursive" }}>Upcoming Trends !</span>
+            <span style={{ fontFamily: "fantasy" }}>
+              latest offer on fashionology !{" "}
+            </span>{" "}
+            <span style={{ textDecoration: "underline" }}>
+              shop ready -for-fun furniture
+            </span>
+          </SwiperSlide>
+          <SwiperSlide
+            style={{
+              textAlign: "center",
+              backgroundColor: "rgb(220, 101, 180)",
+            }}
+          >
+            <span style={{ fontFamily: "cursive" }}>
+              let the hosting begin{" "}
+            </span>
+            <span style={{ fontFamily: "fantasy" }}>
+              It's Patio Party Time !{" "}
+            </span>{" "}
+            <span style={{ textDecoration: "underline" }}>
+              shop ready -for-fun furniture & decor
+            </span>
+          </SwiperSlide>
+          <SwiperSlide
+            style={{
+              textAlign: "center",
+              backgroundColor: "rgb(161, 90, 227)",
+            }}
+          >
+            <span style={{ fontFamily: "cursive" }}>Seeing starts?</span>
+            <span style={{ fontFamily: "fantasy" }}>
+              Write 5+ reviews. Get 20% Off!
+            </span>{" "}
+            <span style={{ textDecoration: "underline" }}>
+              view your order history
+            </span>
+          </SwiperSlide>
+        </Swiper>
+      </div>
       <Box w="100%" p={4} color="rgb(22,122,146)" fontFamily={"inherit"}>
         <Box
           style={{
@@ -72,18 +118,48 @@ export const Navbar = () => {
             English ($)
             <SlArrowDown />
           </div>
-          <Button
-            _hover={{ color: "black" }}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "5px",
-              background: "none",
-              fontFamily: "",
-            }}
-          >
-            <BiUser style={{ fontSize: "25px" }} /> Sign In / Sign Up
-          </Button>
+         
+          <Menu>
+            <MenuButton
+              as={Button}
+              _hover={{ color: "black" }}
+              style={{
+                display: "flex",
+
+                alignItems: "center",
+                gap: "5px",
+                background: "none",
+                fontFamily: "",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+
+                  alignItems: "center",
+                  gap: "5px",
+                  background: "none",
+                  fontFamily: "",
+                }}
+              >
+                {" "}
+                <BiUser style={{ fontSize: "25px" }} /> Sign In / Sign Up
+              </div>
+            </MenuButton>
+            <MenuList>
+              <MenuGroup title="Profile">
+                <MenuItem>Order History</MenuItem>
+                <MenuItem>Payments </MenuItem>
+              </MenuGroup>
+              <MenuDivider />
+              <MenuGroup title="If you are new user">
+                {/* <MenuItem>Register</MenuItem> */}
+                <RegisterButton/>
+                {/* <MenuItem>Login</MenuItem> */}
+                <LoginButton isOpen={isOpen} onOpen={onOpen} onClose={onClose}  />
+              </MenuGroup>
+            </MenuList>
+          </Menu>
         </Box>
       </Box>
       <Box style={{ display: "flex", alignItems: "center" }}>
@@ -167,12 +243,12 @@ export const Navbar = () => {
           }}
         >
           <TabList
-            // style={{
-            //   display: "flex",
-            //   fontSize: "12px",
-            //   alignItems: "center",
-            //   height: "60px",
-            // }}
+          // style={{
+          //   display: "flex",
+          //   fontSize: "12px",
+          //   alignItems: "center",
+          //   height: "60px",
+          // }}
           >
             <Tab textDecoration={"none"} fontSize={"small"}>
               <Link to=""> New!</Link>
