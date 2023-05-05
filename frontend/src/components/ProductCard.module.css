@@ -1,0 +1,25 @@
+  .cardContainer {
+    width: 320px;
+    height: 480px;
+    position: relative;
+    margin: 1rem;
+    border: 1px solid grey;
+  }
+
+  .cardContainer:hover {
+    cursor: pointer;
+  }
+
+  .cardImage {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+  }
+  
+  .cardDetails {
+    height: 20%;
+    object-fit: cover;
+  }
+
+
+  
