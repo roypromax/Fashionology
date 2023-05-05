@@ -27,6 +27,7 @@ const LandingPage = () => {
     // 1 part goes here
     <Wrapper>
       <Content>
+
         <Header>
           {imgFirst.map((e) => (
             <TopGridImages>
@@ -49,6 +50,7 @@ const LandingPage = () => {
                   alt=""
                 />
               </NavLink>
+
             </FirstImage>
             <SecondImage>
               <NavLink to="">
@@ -74,6 +76,7 @@ const LandingPage = () => {
               />
             </NavLink>
           </ThirdImage>
+
           <FourthImage>
             <NavLink to="">
               <img
@@ -106,7 +109,9 @@ const LandingPage = () => {
                 alt=""
               />
             </NavLink>
+
           </SixImage>
+
         </ThirdDiv>
 
         {/* 5 part goes here */}
@@ -119,12 +124,16 @@ const LandingPage = () => {
                 alt=""
               />
             </NavLink>
+
           </SevenImage>
+
         </FourthDiv>
 
         {/* 6 part goes here */}
         <FifthDiv>
+
           <EightImage>
+
             <NavLink to="">
               <img
                 style={{ width: "95%", height: "100%" }}
@@ -132,18 +141,24 @@ const LandingPage = () => {
                 alt=""
               />
             </NavLink>
+
           </EightImage>
+
           <NineImage>
+
             <NavLink to="">
+
               <img
                 style={{ width: "95%", height: "100%" }}
                 src="https://images.ctfassets.net/5de70he6op10/560llcm37aGBh39gIIRVie/5d1b36661eaa3f8116c3cddd4735e517/495283995-ls_m5b.jpg?w=856&q=80&fm=webp"
                 alt=""
               />
             </NavLink>
+
           </NineImage>
 
           <TenImage>
+          
             <NavLink to="">
               <img
                 style={{ width: "100%", height: "100%" }}
@@ -183,6 +198,7 @@ const LandingPage = () => {
           <TeenImage>
             <NavLink to="">
               <img
+
                 style={{ width: "93%", height: "100%" }}
                 src="https://images.ctfassets.net/5de70he6op10/2KTwqZTJznCmy6a5zgoMrm/f9811948fec830ec99ba34625d82fa57/495283939-ls_customerfave_c.jpg?w=630&q=80&fm=webp"
                 alt=""
@@ -192,6 +208,7 @@ const LandingPage = () => {
           </TeenImage>
 
           <CharImage>
+
             <NavLink to="">
               <img
                 style={{ width: "100%", height: "100%" }}
@@ -205,6 +222,7 @@ const LandingPage = () => {
         <h3>More to Explore</h3>
         <br />
         <hr />
+
         <br />
         {/* 8 part goes here */}
         <SevenDiv>
@@ -217,6 +235,7 @@ const LandingPage = () => {
               />
             </NavLink>
           </PanchImage>
+
           <CheImage>
             <NavLink to="">
               <img
@@ -228,6 +247,7 @@ const LandingPage = () => {
           </CheImage>
 
           <SaatImage>
+
             <NavLink to="">
               <img
                 style={{ width: "100%", height: "100%" }}
@@ -236,7 +256,9 @@ const LandingPage = () => {
               />
             </NavLink>
           </SaatImage>
+          
         </SevenDiv>
+
       </Content>
       {/* main end */}
     </Wrapper>
