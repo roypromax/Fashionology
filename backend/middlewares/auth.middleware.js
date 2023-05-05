@@ -9,10 +9,11 @@ const auth = (req, res, next) => {
     }
     const token = authHeader.split(" ")[1];
     jwt.verify(token, process.env.jwtSecret, (err, decoded) => {
+      console.log(decoded);
       if (err) {
         return res.status(401).json({ error: "Invalid token" });
       }
-      if (decoded.role !== "admin") {
+      if (decoded.userRole !== "admin") {
         return res.status(401).json({ error: "Unauthorized access" });
       }
       next();
