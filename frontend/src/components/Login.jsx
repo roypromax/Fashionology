@@ -1,6 +1,7 @@
+import { Box, Button, Heading, Input } from "@chakra-ui/react";
 import React from "react";
 
-export const login = () => {
+export const Login = () => {
   return (
     <Box m="auto" display={"grid"} gap="20px">
       <Heading textAlign={"center"}>Login</Heading>
