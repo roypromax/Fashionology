@@ -6,6 +6,7 @@ import styled from "styled-components";
 // import collection from "../../Images/collection.png";
 
 
+
 const LandingPage = () => {
   const imgFirst = [
     {
@@ -155,7 +156,9 @@ const LandingPage = () => {
         </FifthDiv>
 
         <h3>Top-Rated Picks</h3>
+        <br />
          <hr />
+         <br />
         {/* 7 part goes here */}
         <SixDiv>
           <AkImage>
@@ -200,7 +203,9 @@ const LandingPage = () => {
         </SixDiv>
 
         <h3>More to Explore</h3>
+        <br />
         <hr />
+        <br />
         {/* 8 part goes here */}
         <SevenDiv>
           <PanchImage>
@@ -241,12 +246,33 @@ const LandingPage = () => {
 const Wrapper = styled.div`
   max-width: 100%;
   height: auto;
+
+  @media (max-width:719px) {
+    max-width: 100%;
+    height: auto;
+  }
+  @media (max-width:720px) and (min-width: 1200px) {
+    max-width: 100%;
+  height: auto;
+  }
 `;
 
 const Content = styled.div`
   max-width: 92%;
   margin: auto;
   height: auto;
+
+  @media (max-width:719px) {
+    max-width: 92%;
+  margin: auto;
+  height: auto;
+
+  @media (max-width:720px) and (min-width: 1200px) {
+    max-width: 92%;
+  margin: auto;
+  height: auto;
+  }
+  }
 `;
 // Top Div Part
 const Header = styled.div`
@@ -255,15 +281,48 @@ const Header = styled.div`
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
   gap: 0px 20px;
+
+  @media (max-width:719px) {
+    display: grid;
+  margin-top: 50px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  gap: 0px 20px;
+  }
+
+  @media (max-width:720px) and (min-width: 1200px) {
+    display: grid;
+  margin-top: 50px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 0px 20px;
+  }
+  
 `;
 
 const TopGridImages = styled.div`
   width: 100%;
+
+  @media (max-width:719px) {
+    width: 100%;
+  }
+
+  @media (max-width:720px) and (min-width: 1200px) {
+    width: 100%;
+  }
 `;
 
 // First Div Part
 const FirstContainer = styled.div`
   height: auto;
+
+  @media (max-width:719px) {
+    height: auto;
+  }
+
+  @media (max-width:720px) and (min-width: 1200px) {
+    height: auto;
+  }
 `;
 
 const FirstDiv = styled.div`
@@ -271,15 +330,48 @@ const FirstDiv = styled.div`
   max-width: 100%;
   height: auto;
   margin: 40px 0px;
+
+  @media (max-width:719px) {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  max-width: 100%;
+  height: auto;
+  margin: 40px 0px;
+  }
+
+  @media (max-width:720px) and (min-width: 1200px) {
+    display: flex;
+  max-width: 100%;
+  height: auto;
+  margin: 40px 0px;
+  }
+  
 `;
 
 const FirstImage = styled.div`
   flex: 2;
+
+  @media (max-width:719px) {
+    flex: 2;
+    margin-bottom:50px;
+  }
+
+  @media (max-width:720px) and (min-width: 1200px) {
+    flex: 2;
+  }
 `;
 
 // second
 const SecondImage = styled.div`
   flex: 1;
+
+  @media (max-width:719px) {
+    flex: 1;
+  }
+  @media (max-width:720px) and (min-width: 1200px) {
+    flex: 1;
+  }
+  
 `;
 // third
 const SecondDiv = styled.div`
@@ -289,18 +381,66 @@ const SecondDiv = styled.div`
   justify-content: space-between;
   /* border: 1px solid red; */
   margin: 40px 0px;
+
+  @media (max-width:719px) {
+    display: grid;
+  max-width: 100%;
+  height: auto;
+  grid-template-columns: repeat(1, 1fr);
+  justify-content: space-between;
+  /* border: 1px solid red; */
+  margin: 40px 0px;
+  }
+
+  @media (max-width:720px) and (min-width: 1200px) {
+    display: flex;
+  max-width: 100%;
+  height: auto;
+  justify-content: space-between;
+  /* border: 1px solid red; */
+  margin: 40px 0px;
+  }
 `;
 
 const ThirdImage = styled.div`
   flex: 1;
+
+  @media (max-width:719px) {
+    flex: 1;
+    margin-bottom:40px;
+  }
+
+  
+  @media (max-width:720px) and (min-width: 1200px) {
+    flex: 1;
+  }
+
 `;
 
 const FourthImage = styled.div`
   flex: 1;
+
+  @media (max-width:719px) {
+    flex: 1;
+    margin-bottom:40px;
+  }
+
+  @media (max-width:720px) and (min-width: 1200px) {
+    flex: 1;
+  }
+  
 `;
 
 const FifthImage = styled.div`
   flex: 1;
+
+  @media (max-width:719px) {
+    flex: 1;
+  }
+
+  @media (max-width:720px) and (min-width: 1200px) {
+    flex: 1;
+  }
 `;
 
 // fourth
@@ -308,20 +448,53 @@ const ThirdDiv = styled.div`
   max-width: 100%;
   height: auto;
   margin: 40px 0px;
+
+  @media (max-width:719px) {
+    max-width: 100%;
+  height: auto;
+  margin: 40px 0px;
+  }
+
+  @media (max-width:720px) and (min-width: 1200px) {
+    max-width: 100%;
+  height: auto;
+  margin: 40px 0px;
+  }
 `;
 
 const SixImage = styled.div`
   flex: 1;
+
+  
+  @media (max-width:719px) {
+    flex: 1;
+  }
+  @media (max-width:720px) and (min-width: 1200px) {
+    flex: 1;
+  }
 `;
 
 const FourthDiv = styled.div`
   max-width: 100%;
   height: auto;
   margin: 40px 0px;
+
+  @media (max-width:719px) {
+    max-width: 100%;
+  height: auto;
+  margin: 40px 0px;
+  }
+  @media (max-width:720px) and (min-width: 1200px) {
+    max-width: 100%;
+  height: auto;
+  margin: 40px 0px;
+  }
 `;
 
 const SevenImage = styled.div`
   flex: 1;
+
+  
 `;
 
 // third
@@ -331,14 +504,50 @@ const FifthDiv = styled.div`
   height: auto;
   justify-content: space-between;
   margin: 40px 0px;
+
+  @media (max-width:719px) {
+    display: grid;
+  max-width: 100%;
+  height: auto;
+  grid-template-columns: repeat(1, 1fr);
+  justify-content: space-between;
+  margin: 40px 0px;
+  }
+  @media (max-width:720px) and (min-width: 1200px) {
+    display: flex;
+  max-width: 100%;
+  height: auto;
+  justify-content: space-between;
+  margin: 40px 0px;
+  }
 `;
 
 const EightImage = styled.div`
   flex: 1;
+
+  
+  @media (max-width:719px) {
+    flex: 1;
+    margin-bottom:40px;
+  }
+
+  @media (max-width:720px) and (min-width: 1200px) {
+    flex: 1;
+  }
 `;
 
 const NineImage = styled.div`
   flex: 1;
+
+  
+  @media (max-width:719px) {
+    flex: 1;
+    margin-bottom:40px;
+  }
+
+  @media (max-width:720px) and (min-width: 1200px) {
+    flex: 1;
+  }
 `;
 
 const TenImage = styled.div`
@@ -352,22 +561,67 @@ const SixDiv = styled.div`
   height: auto;
   justify-content: space-between;
   margin: 40px 0px;
+
+  @media (max-width:719px) {
+    display: grid;
+  max-width: 100%;
+  height: auto;
+  grid-template-columns: repeat(1, 1fr);
+  justify-content: space-between;
+  margin: 40px 0px;
+  }
+
+  @media (max-width:720px) and (min-width: 1200px) {
+    display: flex;
+  max-width: 100%;
+  height: auto;
+  justify-content: space-between;
+  margin: 40px 0px;
+  }
 `;
 
 const AkImage = styled.div`
   flex: 1;
+  
+  @media (max-width:719px) {
+    flex: 1;
+    margin-bottom:40px;
+  }
+
+  @media (max-width:720px) and (min-width: 1200px) {
+    flex: 1;
+  }
+  
 `;
 
 const DoImage = styled.div`
   flex: 1;
+  
+  @media (max-width:719px) {
+    flex: 1;
+    margin-bottom:40px;
+  }
+  @media (max-width:720px) and (min-width: 1200px) {
+    flex: 1;
+  }
+  
 `;
 
 const TeenImage = styled.div`
   flex: 1;
+  
+  @media (max-width:719px) {
+    flex: 1;
+    margin-bottom:40px;
+  }
+  @media (max-width:720px) and (min-width: 1200px) {
+    flex: 1;
+  }
 `;
 
 const CharImage = styled.div`
   flex: 1;
+  
 `;
 
 const SevenDiv = styled.div`
@@ -376,18 +630,57 @@ const SevenDiv = styled.div`
   height: auto;
   justify-content: space-between;
   margin: 40px 0px;
+
+  
+  @media (max-width:719px) {
+    display: grid;
+  max-width: 100%;
+  height: auto;
+  grid-template-columns: repeat(1, 1fr);
+  justify-content: space-between;
+  margin: 40px 0px;
+  }
+
+  @media (max-width:720px) and (min-width: 1200px) {
+    display: grid;
+  max-width: 100%;
+  height: auto;
+  grid-template-columns: repeat(1, 1fr);
+  justify-content: space-between;
+  margin: 40px 0px;
+  }
 `;
 
 const PanchImage = styled.div`
   flex: 1;
+  
+  @media (max-width:719px) {
+    flex: 1;
+    margin-bottom:40px;
+  }
+
+  @media (max-width:720px) and (min-width: 1200px) {
+    flex: 1;
+  }
 `;
 
 const CheImage = styled.div`
   flex: 1;
+  
+  @media (max-width:719px) {
+    flex: 1;
+    margin-bottom:40px;
+  }
+
+  @media (max-width:720px) and (min-width: 1200px) {
+    flex: 1;
+  }
+  
 `;
 
 const SaatImage = styled.div`
   flex: 1;
 `;
+
 
 export default LandingPage;
