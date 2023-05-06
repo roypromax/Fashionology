@@ -34,7 +34,7 @@ userRouter.post("/login",async(req,res)=>{
         res.status(400).json({msg:"Invalid email or password"});
     }else{
         bcrypt.compare(password, user.password, (err,result)=>{
-            if(err){
+            if(err || !result){
                 res.status(400).json({msg:"Invalid email or password"});
             }else{
                 const token = jwt.sign({userId:user._id,userName:user.name,userRole:user.role},process.env.jwtSecret);
