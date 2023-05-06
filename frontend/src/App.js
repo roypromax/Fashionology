@@ -1,12 +1,17 @@
 import './App.css';
-import { AllRoutes } from './Routes/AllRoutes';
+
+import { Home } from './pages/Home';
+import { Footer } from './components/Footer';
+import { Productpage } from './pages/Productpage';
+import { Allroutes } from './pages/Allroutes';
+
 
 
 
 function App() {
   return (
     <div className="App">
-      <AllRoutes/>
+      <Allroutes/>
     </div>
   );
 }
