@@ -16,9 +16,9 @@ productRouter.get("/", async(req,res)=>{
 
     try {
         const products = await ProductModel.find(query).skip((page-1)*limit).limit(+limit);
-        res.status(200).send(products).json();
+        res.status(200).json(products);
     } catch (error) {
-        res.status(400).send({err:error}).json();
+        res.status(400).json({error: error.message});
     }
 })
 
@@ -27,7 +27,7 @@ productRouter.get("/:id",async(req,res)=>{
 
     try {
         const product = await ProductModel.findById({_id:id});
-        res.status(200).send(product).json();
+        res.status(200).json(product);
     } catch (error) {
         res.status(400).json({err:error});
     }

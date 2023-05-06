@@ -35,7 +35,7 @@ const ListHeader = ({ children }) => {
 export const  Footer=()=> {
   return (
     <Box
-      bg={useColorModeValue('gray.50', 'gray.900')}
+      bg={useColorModeValue('#FFFFFF', '#FFFFFF')}
       color={useColorModeValue('gray.700', 'gray.200')}>
       <Container as={Stack} maxW={'6xl'} py={10}>
         <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
@@ -46,7 +46,7 @@ export const  Footer=()=> {
               <Link href={'#'}>Features</Link>
               <Tag
                 size={'sm'}
-                bg={useColorModeValue('green.300', 'green.800')}
+                bg={useColorModeValue('#167A92', '#167A92')}
                 ml={2}
                 color={'white'}>
                 New
