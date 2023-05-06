@@ -1,7 +1,7 @@
 import { Box, Button, Heading, Input } from '@chakra-ui/react';
 import React, { useState } from 'react'
 
-export const Register = () => {
+export const Register = ({ onClose }) => {
   const [firstName, setFirstName] = useState("");
   const [lasttName, setLastName] = useState("");
   const [number, setNumber] = useState("");
@@ -58,7 +58,7 @@ export const Register = () => {
      required
    />
 
-   <Button onClick={handleRegister}colorScheme={"rgb(22, 122, 146)"} >Register</Button>
+   <Button  colorScheme={"#d88c34;"} >Register</Button>
  </Box>
   )
 }
