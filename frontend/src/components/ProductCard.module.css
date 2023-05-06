@@ -3,7 +3,7 @@
     height: 480px;
     position: relative;
     margin: 1rem;
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
   }
 
   .cardContainer:hover {
