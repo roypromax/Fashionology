@@ -9,11 +9,21 @@ import {
   ModalOverlay,
 } from "@chakra-ui/react";
 
-export const LoginButton = ({ isOpen, onOpen, onClose }) => {
+export const LoginButton = ({ isOpen, onOpen, onClose, userName }) => {
+  const handleLogout = () => {
+    localStorage.removeItem("userData");
+  
+    window.location.href = "/";
+  };
+
   return (
     <div>
       {" "}
-      <MenuItem onClick={onOpen}>Login</MenuItem>
+      {userName ? (
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+      ) : (
+        <MenuItem onClick={onOpen}>Login</MenuItem>
+      )}
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
