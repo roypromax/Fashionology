@@ -17,7 +17,7 @@ export const Login = () => {
         placeholder="Enter Your Password"
       />
 
-      <Button  colorScheme={"rgb(22, 122, 146)"}>
+      <Button colorScheme={"#d88c34;"} >
         Login
       </Button>
     </Box>
