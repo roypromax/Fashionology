@@ -34,12 +34,15 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import { LoginButton } from "./LoginButton";
 import { RegisterButton } from "./RegisterButton";
-
+import { useSelector } from "react-redux";
 
 export const Navbar = () => {
- 
- 
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const { isAuth, token, isLoading, userName } = useSelector(
+    (store) => store.loginReducer
+  );
+
   return (
     <div
       style={{
@@ -120,7 +123,7 @@ export const Navbar = () => {
             English ($)
             <SlArrowDown />
           </div>
-         
+
           <Menu>
             <MenuButton
               as={Button}
@@ -145,7 +148,7 @@ export const Navbar = () => {
                 }}
               >
                 {" "}
-                <BiUser style={{ fontSize: "25px" }} /> Sign In / Sign Up
+                <BiUser style={{ fontSize: "25px" }} />{userName?userName:"Sign In / Sign Up"}
               </div>
             </MenuButton>
             <MenuList>
@@ -154,11 +157,16 @@ export const Navbar = () => {
                 <MenuItem>Payments </MenuItem>
               </MenuGroup>
               <MenuDivider />
-              <MenuGroup title="If you are new user">
+              <MenuGroup title="">
                 {/* <MenuItem>Register</MenuItem> */}
-                <RegisterButton/>
+                <RegisterButton  isAuth={isAuth} />
                 {/* <MenuItem>Login</MenuItem> */}
-                <LoginButton isOpen={isOpen} onOpen={onOpen} onClose={onClose}  />
+                <LoginButton
+                  isOpen={isOpen}
+                  onOpen={onOpen}
+                  onClose={onClose}
+                  userName={userName}
+                />
               </MenuGroup>
             </MenuList>
           </Menu>

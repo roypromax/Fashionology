@@ -1,16 +1,43 @@
-import { Box, Button, Heading, Input } from '@chakra-ui/react';
-import React, { useState } from 'react'
+import { Box, Button, Heading, Input, useToast } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { SignUp } from "../Redux/registerReducer/action";
 
 export const Register = ({ onClose }) => {
-  const [firstName, setFirstName] = useState("");
-  const [lasttName, setLastName] = useState("");
-  const [number, setNumber] = useState("");
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const toast = useToast();
 
+  const dispatch = useDispatch();
+
+  const handleRegister = () => {
+    const registerData = {
+      name,
+      email,
+      password,
+      phoneNumber,
+      address,
+    };
+
+    dispatch(
+      SignUp(
+        registerData,
+        onClose,
+        toast,
+        setName,
+        setAddress,
+        setPhoneNumber,
+        setEmail,
+        setPassword
+      )
+    );
+  };
   return (
     <Box m="auto" display={"grid"} gap="20px" borderRadius={"16px"}>
-    {/* {isLoading && (
+      {/* {isLoading && (
        <Progress
          isIndeterminate
          hasStripe={true}
@@ -18,47 +45,47 @@ export const Register = ({ onClose }) => {
          size="sm"
        />
      )} */}
-   <Heading textAlign={"center"}>Register Now</Heading>
-   <Input
-     type={"text"}
-     value={firstName}
-     onChange={(e) => setFirstName(e.target.value)}
-     placeholder="Enter Your First Name"
-     required
-   />
-   <Input
-     type={"text"}
-     value={lasttName}
-     onChange={(e) => setLastName(e.target.value)}
-     placeholder="Enter Your Last Name"
-     required
-   />
-   <Input
-     type="number"
-     value={number}
-     onChange={(e) => setNumber(e.target.value)}
-     placeholder="Enter Your Mobile Number"
-     required
-     
-   />
+      <Heading textAlign={"center"}>Register Now</Heading>
+      <Input
+        type={"text"}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Name"
+        required
+      />
 
-   <Input
-     type={"email"}
-     value={email}
-     onChange={(e) => setEmail(e.target.value)}
-     placeholder="Enter Your Email"
-     required
-     
-   />
-   <Input
-     type={"password"}
-     value={password}
-     onChange={(e) => setPassword(e.target.value)}
-     placeholder="Enter Your Password"
-     required
-   />
+      <Input
+        type={"email"}
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Enter Your Email"
+        required
+      />
+      <Input
+        type={"password"}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Enter Your Password"
+        required
+      />
+      <Input
+        type="number"
+        value={phoneNumber}
+        onChange={(e) => setPhoneNumber(e.target.value)}
+        placeholder="Enter Your Mobile Number"
+        required
+      />
+      <Input
+        type={"text"}
+        value={address}
+        onChange={(e) => setAddress(e.target.value)}
+        placeholder="Enter Your Address"
+        required
+      />
 
-   <Button  colorScheme={"#d88c34;"} >Register</Button>
- </Box>
-  )
-}
+      <Button onClick={handleRegister} colorScheme={"#d88c34;"}>
+        Register
+      </Button>
+    </Box>
+  );
+};
