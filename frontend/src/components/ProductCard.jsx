@@ -14,7 +14,7 @@ const ProductCard = ({_id,name,price,images}) => {
   }
 
   return (
-    <Link to={`/products/${_id}`}>
+    <Link to={`/productpage/${_id}`}>
     <div className={style.cardContainer} onMouseEnter={mouseEnterFn} onMouseLeave={mouseLeaveFn}>
       <img className={style.cardImage} src={hover?images[1]:images[0]} alt={name} />
       <div className={style.cardDetails}>

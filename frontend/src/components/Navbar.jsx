@@ -26,7 +26,7 @@ import logo from "../assets/logo.png";
 import { SlArrowDown, SlGlobeAlt } from "react-icons/sl";
 import { BiSearch, BiUser } from "react-icons/bi";
 import { BsHandbag } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Keyboard, Mousewheel } from "swiper";
@@ -261,7 +261,7 @@ export const Navbar = () => {
           // }}
           >
             <Tab textDecoration={"none"} fontSize={"small"}>
-              <Link to=""> New!</Link>
+              <Link to="" > New!</Link>
             </Tab>
             <Tab fontSize={"small"}>
               <Link to=""> Gift for Mom</Link>
@@ -270,19 +270,19 @@ export const Navbar = () => {
               <Link to=""> Dresses</Link>
             </Tab>
             <Tab fontSize={"small"}>
-              <Link to="/cloths"> Clothing</Link>
+              <Link to={{ pathname: "/productpage", search: "?category=clothing" }}> Clothing</Link>
             </Tab>
             <Tab fontSize={"small"}>
-              <Link to="/shoes"> Shoes</Link>
+              <Link to={{ pathname: "/productpage", search: "?category=shoes" }}> Shoes</Link>
             </Tab>
             <Tab fontSize={"small"}>
               <Link to=""> Accessories</Link>
             </Tab>
             <Tab fontSize={"small"}>
-              <Link to=""> Home & Furniture</Link>
+              <Link > Home & Furniture</Link>
             </Tab>
             <Tab fontSize={"small"}>
-              <Link to=""> Beauty & Wellness</Link>
+              <Link to={{ pathname: "/productpage", search: "?category=Beauty&Wellness" }}> Beauty & Wellness</Link>
             </Tab>
             <Tab fontSize={"small"}>
               <Link to=""> Garden & Outdoor</Link>
