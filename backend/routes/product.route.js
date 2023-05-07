@@ -7,12 +7,14 @@ const {ProductModel} = require("../models/product.model");
 const productRouter = express.Router();
 
 productRouter.get("/", async(req, res) => {
-    const {mainCategory, subCategory, page, limit} = req.query;
+    const {mainCategory, subCategory, minRating, page, limit} = req.query;
     const query = {};
 
     if(mainCategory) query.mainCategory = mainCategory;
 
     if(subCategory) query.subCategory = subCategory;
+
+    if(minRating) query.rating = {$gte:+minRating};
 
     try {
         const products = await ProductModel.find(query).skip((page-1)*limit).limit(+limit);
@@ -47,5 +49,25 @@ productRouter.post("/add", async(req, res) => {
         res.status(400).json({error: error.message});
     }
 });
+
+productRouter.patch("/update/:productID",async(req,res)=>{
+    const {productID} = req.params;
+    try {
+        await ProductModel.findByIdAndUpdate({_id:productID},req.body)
+        res.status(200).json({message:`Product with id : ${productID} has been updated`});
+    } catch (error) {
+        res.status(400).json({error: error.message});
+    }
+})
+
+productRouter.delete("/delete/:productID",async(req,res)=>{
+    const {productID} = req.params;
+    try {
+        await ProductModel.findByIdAndDelete({_id:productID})
+        res.status(200).json({message:`Product with id : ${productID} has been deleted`});
+    } catch (error) {
+        res.status(400).json({error: error.message});
+    }
+})
 
 module.exports = {productRouter};
