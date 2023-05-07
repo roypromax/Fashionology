@@ -1,0 +1,46 @@
+{
+  "products": [
+    {
+      "id" : 1,
+      "name" : "Tops",
+      "rating" : 3,
+      "price" : 455,
+      "sizes" : "X",
+      "quantity" : 2,
+      "color" : "red",
+      "mainCategory" : "clothing",
+      "subCategory" : "Women",
+      "images" : "https://m.media-amazon.com/images/I/816BrXmRnGL._UL1500_.jpg",
+      "brand" : "Roadster",
+      "description" : "Women Cotton Pure Tops"
+    },
+    {
+      "id" : 2,
+      "name" : "Tops",
+      "rating" : 3,
+      "price" : 465,
+      "sizes" : "XL",
+      "quantity" : 3,
+      "color" : "green",
+      "mainCategory" : "clothing",
+      "subCategory" : "Women",
+      "images" : "https://m.media-amazon.com/images/I/816BrXmRnGL._UL1500_.jpg",
+      "brand" : "Roadster",
+      "description" : "Women Cotton Pure Tops"
+    },
+    {
+      "id" : 3,
+      "name" : "Tops",
+      "rating" : 5,
+      "price" : 458,
+      "sizes" : "M",
+      "quantity" : 4,
+      "color" : "yellow",
+      "mainCategory" : "clothing",
+      "subCategory" : "Women",
+      "images" : "https://m.media-amazon.com/images/I/816BrXmRnGL._UL1500_.jpg",
+      "brand" : "Roadster",
+      "description" : "Women Cotton Pure Tops"
+    }
+  ]
+}

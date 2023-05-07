@@ -5,8 +5,6 @@ import styled from "styled-components";
 // import accessories from "../../Images/accessories.png";
 // import collection from "../../Images/collection.png";
 
-
-
 const LandingPage = () => {
   const imgFirst = [
     {
@@ -27,17 +25,15 @@ const LandingPage = () => {
     // 1 part goes here
     <Wrapper>
       <Content>
-
         <Header>
-          {imgFirst.map((e) => (
+          {imgFirst.map((e, index) => (
             <TopGridImages>
-              <NavLink to="">
+              <NavLink key={index} to="">
                 <img style={{ width: "100%" }} src={e.url} alt="img first" />
               </NavLink>
             </TopGridImages>
           ))}
         </Header>
-
 
         {/* 2nd part goes here */}
         <FirstContainer>
@@ -50,7 +46,6 @@ const LandingPage = () => {
                   alt=""
                 />
               </NavLink>
-
             </FirstImage>
             <SecondImage>
               <NavLink to="">
@@ -63,7 +58,6 @@ const LandingPage = () => {
             </SecondImage>
           </FirstDiv>
         </FirstContainer>
-
 
         {/* 3 part goes here */}
         <SecondDiv>
@@ -84,7 +78,6 @@ const LandingPage = () => {
                 src="https://images.ctfassets.net/5de70he6op10/7iqzbl2SU2BRRAKUn7bP3U/dacb672e6989fd6ef8c80ec49b4d9e8b/495283977-ls_m2b.jpg?w=856&q=80&fm=webp"
                 alt=""
               />
-              
             </NavLink>
           </FourthImage>
 
@@ -109,9 +102,7 @@ const LandingPage = () => {
                 alt=""
               />
             </NavLink>
-
           </SixImage>
-
         </ThirdDiv>
 
         {/* 5 part goes here */}
@@ -124,16 +115,12 @@ const LandingPage = () => {
                 alt=""
               />
             </NavLink>
-
           </SevenImage>
-
         </FourthDiv>
 
         {/* 6 part goes here */}
         <FifthDiv>
-
           <EightImage>
-
             <NavLink to="">
               <img
                 style={{ width: "95%", height: "100%" }}
@@ -141,39 +128,33 @@ const LandingPage = () => {
                 alt=""
               />
             </NavLink>
-
           </EightImage>
 
           <NineImage>
-
             <NavLink to="">
-
               <img
                 style={{ width: "95%", height: "100%" }}
                 src="https://images.ctfassets.net/5de70he6op10/560llcm37aGBh39gIIRVie/5d1b36661eaa3f8116c3cddd4735e517/495283995-ls_m5b.jpg?w=856&q=80&fm=webp"
                 alt=""
               />
             </NavLink>
-
           </NineImage>
 
           <TenImage>
-          
             <NavLink to="">
               <img
                 style={{ width: "100%", height: "100%" }}
                 src="https://images.ctfassets.net/5de70he6op10/5va7aIOLGeKyXaodGikTGr/487c74d412ca055b47ea834edfa7b937/495283991-ls_m5a.jpg?w=856&q=80&fm=webp"
                 alt=""
               />
-
             </NavLink>
           </TenImage>
         </FifthDiv>
 
         <h3>Top-Rated Picks</h3>
         <br />
-         <hr />
-         <br />
+        <hr />
+        <br />
         {/* 7 part goes here */}
         <SixDiv>
           <AkImage>
@@ -198,17 +179,14 @@ const LandingPage = () => {
           <TeenImage>
             <NavLink to="">
               <img
-
                 style={{ width: "93%", height: "100%" }}
                 src="https://images.ctfassets.net/5de70he6op10/2KTwqZTJznCmy6a5zgoMrm/f9811948fec830ec99ba34625d82fa57/495283939-ls_customerfave_c.jpg?w=630&q=80&fm=webp"
                 alt=""
               />
-              
             </NavLink>
           </TeenImage>
 
           <CharImage>
-
             <NavLink to="">
               <img
                 style={{ width: "100%", height: "100%" }}
@@ -247,7 +225,6 @@ const LandingPage = () => {
           </CheImage>
 
           <SaatImage>
-
             <NavLink to="">
               <img
                 style={{ width: "100%", height: "100%" }}
@@ -256,9 +233,7 @@ const LandingPage = () => {
               />
             </NavLink>
           </SaatImage>
-          
         </SevenDiv>
-
       </Content>
       {/* main end */}
     </Wrapper>
@@ -269,13 +244,13 @@ const Wrapper = styled.div`
   max-width: 100%;
   height: auto;
 
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     max-width: 100%;
     height: auto;
   }
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     max-width: 100%;
-  height: auto;
+    height: auto;
   }
 `;
 
@@ -284,16 +259,16 @@ const Content = styled.div`
   margin: auto;
   height: auto;
 
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     max-width: 92%;
-  margin: auto;
-  height: auto;
+    margin: auto;
+    height: auto;
 
-  @media (max-width:720px) and (min-width: 1200px) {
-    max-width: 92%;
-  margin: auto;
-  height: auto;
-  }
+    @media (max-width: 720px) and (min-width: 1200px) {
+      max-width: 92%;
+      margin: auto;
+      height: auto;
+    }
   }
 `;
 // Top Div Part
@@ -304,32 +279,31 @@ const Header = styled.div`
   grid-template-rows: auto;
   gap: 0px 20px;
 
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     display: grid;
-  margin-top: 50px;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: auto;
-  gap: 0px 20px;
+    margin-top: 50px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 0px 20px;
   }
 
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     display: grid;
-  margin-top: 50px;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto;
-  gap: 0px 20px;
+    margin-top: 50px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 0px 20px;
   }
-  
 `;
 
 const TopGridImages = styled.div`
   width: 100%;
 
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     width: 100%;
   }
 
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     width: 100%;
   }
 `;
@@ -338,11 +312,11 @@ const TopGridImages = styled.div`
 const FirstContainer = styled.div`
   height: auto;
 
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     height: auto;
   }
 
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     height: auto;
   }
 `;
@@ -353,32 +327,31 @@ const FirstDiv = styled.div`
   height: auto;
   margin: 40px 0px;
 
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-  max-width: 100%;
-  height: auto;
-  margin: 40px 0px;
+    max-width: 100%;
+    height: auto;
+    margin: 40px 0px;
   }
 
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     display: flex;
-  max-width: 100%;
-  height: auto;
-  margin: 40px 0px;
+    max-width: 100%;
+    height: auto;
+    margin: 40px 0px;
   }
-  
 `;
 
 const FirstImage = styled.div`
   flex: 2;
 
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     flex: 2;
-    margin-bottom:50px;
+    margin-bottom: 50px;
   }
 
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     flex: 2;
   }
 `;
@@ -387,13 +360,12 @@ const FirstImage = styled.div`
 const SecondImage = styled.div`
   flex: 1;
 
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     flex: 1;
   }
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     flex: 1;
   }
-  
 `;
 // third
 const SecondDiv = styled.div`
@@ -404,63 +376,60 @@ const SecondDiv = styled.div`
   /* border: 1px solid red; */
   margin: 40px 0px;
 
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     display: grid;
-  max-width: 100%;
-  height: auto;
-  grid-template-columns: repeat(1, 1fr);
-  justify-content: space-between;
-  /* border: 1px solid red; */
-  margin: 40px 0px;
+    max-width: 100%;
+    height: auto;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: space-between;
+    /* border: 1px solid red; */
+    margin: 40px 0px;
   }
 
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     display: flex;
-  max-width: 100%;
-  height: auto;
-  justify-content: space-between;
-  /* border: 1px solid red; */
-  margin: 40px 0px;
+    max-width: 100%;
+    height: auto;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+    margin: 40px 0px;
   }
 `;
 
 const ThirdImage = styled.div`
   flex: 1;
 
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     flex: 1;
-    margin-bottom:40px;
+    margin-bottom: 40px;
   }
 
-  
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     flex: 1;
   }
-
 `;
 
 const FourthImage = styled.div`
   flex: 1;
 
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     flex: 1;
-    margin-bottom:40px;
+    margin-bottom: 40px;
   }
 
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     flex: 1;
   }
-  
 `;
 
 const FifthImage = styled.div`
   flex: 1;
 
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     flex: 1;
   }
 
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     flex: 1;
   }
 `;
@@ -471,27 +440,26 @@ const ThirdDiv = styled.div`
   height: auto;
   margin: 40px 0px;
 
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     max-width: 100%;
-  height: auto;
-  margin: 40px 0px;
+    height: auto;
+    margin: 40px 0px;
   }
 
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     max-width: 100%;
-  height: auto;
-  margin: 40px 0px;
+    height: auto;
+    margin: 40px 0px;
   }
 `;
 
 const SixImage = styled.div`
   flex: 1;
 
-  
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     flex: 1;
   }
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     flex: 1;
   }
 `;
@@ -501,22 +469,20 @@ const FourthDiv = styled.div`
   height: auto;
   margin: 40px 0px;
 
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     max-width: 100%;
-  height: auto;
-  margin: 40px 0px;
+    height: auto;
+    margin: 40px 0px;
   }
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     max-width: 100%;
-  height: auto;
-  margin: 40px 0px;
+    height: auto;
+    margin: 40px 0px;
   }
 `;
 
 const SevenImage = styled.div`
   flex: 1;
-
-  
 `;
 
 // third
@@ -527,33 +493,32 @@ const FifthDiv = styled.div`
   justify-content: space-between;
   margin: 40px 0px;
 
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     display: grid;
-  max-width: 100%;
-  height: auto;
-  grid-template-columns: repeat(1, 1fr);
-  justify-content: space-between;
-  margin: 40px 0px;
+    max-width: 100%;
+    height: auto;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: space-between;
+    margin: 40px 0px;
   }
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     display: flex;
-  max-width: 100%;
-  height: auto;
-  justify-content: space-between;
-  margin: 40px 0px;
+    max-width: 100%;
+    height: auto;
+    justify-content: space-between;
+    margin: 40px 0px;
   }
 `;
 
 const EightImage = styled.div`
   flex: 1;
 
-  
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     flex: 1;
-    margin-bottom:40px;
+    margin-bottom: 40px;
   }
 
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     flex: 1;
   }
 `;
@@ -561,13 +526,12 @@ const EightImage = styled.div`
 const NineImage = styled.div`
   flex: 1;
 
-  
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     flex: 1;
-    margin-bottom:40px;
+    margin-bottom: 40px;
   }
 
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     flex: 1;
   }
 `;
@@ -584,66 +548,63 @@ const SixDiv = styled.div`
   justify-content: space-between;
   margin: 40px 0px;
 
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     display: grid;
-  max-width: 100%;
-  height: auto;
-  grid-template-columns: repeat(1, 1fr);
-  justify-content: space-between;
-  margin: 40px 0px;
+    max-width: 100%;
+    height: auto;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: space-between;
+    margin: 40px 0px;
   }
 
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     display: flex;
-  max-width: 100%;
-  height: auto;
-  justify-content: space-between;
-  margin: 40px 0px;
+    max-width: 100%;
+    height: auto;
+    justify-content: space-between;
+    margin: 40px 0px;
   }
 `;
 
 const AkImage = styled.div`
   flex: 1;
-  
-  @media (max-width:719px) {
+
+  @media (max-width: 719px) {
     flex: 1;
-    margin-bottom:40px;
+    margin-bottom: 40px;
   }
 
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     flex: 1;
   }
-  
 `;
 
 const DoImage = styled.div`
   flex: 1;
-  
-  @media (max-width:719px) {
+
+  @media (max-width: 719px) {
     flex: 1;
-    margin-bottom:40px;
+    margin-bottom: 40px;
   }
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     flex: 1;
   }
-  
 `;
 
 const TeenImage = styled.div`
   flex: 1;
-  
-  @media (max-width:719px) {
+
+  @media (max-width: 719px) {
     flex: 1;
-    margin-bottom:40px;
+    margin-bottom: 40px;
   }
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     flex: 1;
   }
 `;
 
 const CharImage = styled.div`
   flex: 1;
-  
 `;
 
 const SevenDiv = styled.div`
@@ -653,56 +614,53 @@ const SevenDiv = styled.div`
   justify-content: space-between;
   margin: 40px 0px;
 
-  
-  @media (max-width:719px) {
+  @media (max-width: 719px) {
     display: grid;
-  max-width: 100%;
-  height: auto;
-  grid-template-columns: repeat(1, 1fr);
-  justify-content: space-between;
-  margin: 40px 0px;
+    max-width: 100%;
+    height: auto;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: space-between;
+    margin: 40px 0px;
   }
 
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     display: grid;
-  max-width: 100%;
-  height: auto;
-  grid-template-columns: repeat(1, 1fr);
-  justify-content: space-between;
-  margin: 40px 0px;
+    max-width: 100%;
+    height: auto;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: space-between;
+    margin: 40px 0px;
   }
 `;
 
 const PanchImage = styled.div`
   flex: 1;
-  
-  @media (max-width:719px) {
+
+  @media (max-width: 719px) {
     flex: 1;
-    margin-bottom:40px;
+    margin-bottom: 40px;
   }
 
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     flex: 1;
   }
 `;
 
 const CheImage = styled.div`
   flex: 1;
-  
-  @media (max-width:719px) {
+
+  @media (max-width: 719px) {
     flex: 1;
-    margin-bottom:40px;
+    margin-bottom: 40px;
   }
 
-  @media (max-width:720px) and (min-width: 1200px) {
+  @media (max-width: 720px) and (min-width: 1200px) {
     flex: 1;
   }
-  
 `;
 
 const SaatImage = styled.div`
   flex: 1;
 `;
-
 
 export default LandingPage;
