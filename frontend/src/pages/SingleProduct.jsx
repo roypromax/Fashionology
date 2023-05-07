@@ -9,17 +9,19 @@ import { Footer } from '../components/Footer';
 
 const url = "http://localhost:8080";
 
+let userData = JSON.parse(localStorage.getItem("userData")) || null;
+
 const SingleProduct = () => {
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   const [product, setProduct] = useState(null);
   const [mainImageIndex, setMainImageIndex] = useState(0);
-  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedSize, setSelectedSize] = useState(null);
 
   useEffect(()=>{
     axios.get(`${url}/products/${id}`)
         .then(res=>{
-            console.log(res);
+            // console.log(res);
             setProduct(res.data);
         })
         .catch(err=>{
@@ -33,6 +35,36 @@ const SingleProduct = () => {
 
   const handleSizeChange = (e) => {
     setSelectedSize(e.target.value);
+  }
+  
+  const handleAddtoCart=()=>{
+    if(selectedSize===null){
+      alert("Please select a size first");
+      return;
+    }else if(userData===null){
+      alert("Please login to add products to your cart");
+    }else{
+      let cartProduct = {};
+      cartProduct.name = product.name;
+      cartProduct.rating = product.rating;
+      cartProduct.price = product.price;
+      cartProduct.size = selectedSize;
+      cartProduct.color = product.color;
+      cartProduct.mainCategory = product.mainCategory;
+      cartProduct.subCategory = product.subCategory;
+      cartProduct.images = product.images;
+      cartProduct.brand = product.brand;
+      cartProduct.description = product.description;
+
+      axios.post(`${url}/cart/add`,cartProduct,{
+        headers:{
+          'Content-Type': 'application/json',
+          "Authorization":`Bearer ${userData.token}`
+        }
+      }).then(res=>{
+        alert("Product is added to cart");
+      }).catch(err=>console.log(err));
+    }
   }
 
   const mainImage = product?.images[mainImageIndex];
@@ -75,7 +107,7 @@ const SingleProduct = () => {
             ))}
           </div>
           <p className={style.productDescription}>{product.description}</p>
-          <button className={style.addToCartButton}>Add to Cart</button>
+          <button className={style.addToCartButton} onClick={handleAddtoCart}>Add to Cart</button>
         </div>
       </div>
       <Carousel/>
