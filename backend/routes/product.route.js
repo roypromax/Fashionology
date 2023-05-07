@@ -7,8 +7,9 @@ const {ProductModel} = require("../models/product.model");
 const productRouter = express.Router();
 
 productRouter.get("/", async(req, res) => {
-    const {mainCategory, subCategory, minRating, page, limit} = req.query;
+    const {mainCategory, subCategory, minRating, page, limit, order} = req.query;
     const query = {};
+    const sortBy = {};
 
     if(mainCategory) query.mainCategory = mainCategory;
 
@@ -16,8 +17,14 @@ productRouter.get("/", async(req, res) => {
 
     if(minRating) query.rating = {$gte:+minRating};
 
+    if(order==="asc"){
+        sortBy.price = 1
+    }else if(order==="desc"){
+        sortBy.price = -1;
+    }
+
     try {
-        const products = await ProductModel.find(query).skip((page-1)*limit).limit(+limit);
+        const products = await ProductModel.find(query).skip((page-1)*limit).limit(+limit).sort(sortBy);
         res.status(200).json(products);
     } catch (error) {
         res.status(400).json({error: error.message});
