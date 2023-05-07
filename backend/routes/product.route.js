@@ -48,4 +48,24 @@ productRouter.post("/add", async(req, res) => {
     }
 });
 
+productRouter.patch("/update/:productID",async(req,res)=>{
+    const {productID} = req.params;
+    try {
+        await ProductModel.findByIdAndUpdate({_id:productID},req.body)
+        res.status(200).json({message:`Product with id : ${productID} has been updated`});
+    } catch (error) {
+        res.status(400).json({error: error.message});
+    }
+})
+
+productRouter.delete("/delete/:productID",async(req,res)=>{
+    const {productID} = req.params;
+    try {
+        await ProductModel.findByIdAndDelete({_id:productID})
+        res.status(200).json({message:`Product with id : ${productID} has been deleted`});
+    } catch (error) {
+        res.status(400).json({error: error.message});
+    }
+})
+
 module.exports = {productRouter};
