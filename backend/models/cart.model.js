@@ -12,7 +12,8 @@ const cartSchema = mongoose.Schema({
     images:{type:Array,required:true},
     brand:{type:String,required:true},
     description:{type:String,required:true},
-    userID:{type:String,required:true}
+    userID:{type:String,required:true},
+    userName:{type:String,required:true}
 },{
     versionKey:false
 })
