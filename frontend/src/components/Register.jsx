@@ -1,6 +1,6 @@
-import { Box, Button, Heading, Input, useToast } from "@chakra-ui/react";
+import { Box, Button, Heading, Input, Progress, useToast } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { SignUp } from "../Redux/registerReducer/action";
 
 export const Register = ({ onClose }) => {
@@ -10,6 +10,8 @@ export const Register = ({ onClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const toast = useToast();
+
+  const {isLoading} = useSelector(store=>store.registerReducer)
 
   const dispatch = useDispatch();
 
@@ -37,14 +39,7 @@ export const Register = ({ onClose }) => {
   };
   return (
     <Box m="auto" display={"grid"} gap="20px" borderRadius={"16px"}>
-      {/* {isLoading && (
-       <Progress
-         isIndeterminate
-         hasStripe={true}
-         isAnimated={true}
-         size="sm"
-       />
-     )} */}
+       {isLoading && <Progress size="xs" isIndeterminate />}
       <Heading textAlign={"center"}>Register Now</Heading>
       <Input
         type={"text"}

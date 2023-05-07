@@ -19,6 +19,7 @@ import {
   // TabPanel,
   // TabPanels,
   Tabs,
+  useBreakpointValue,
   useDisclosure,
 } from "@chakra-ui/react";
 import fashionoLogy from "../assets/fashionology.jpeg";
@@ -26,7 +27,8 @@ import logo from "../assets/logo.png";
 import { SlArrowDown, SlGlobeAlt } from "react-icons/sl";
 import { BiSearch, BiUser } from "react-icons/bi";
 import { BsHandbag } from "react-icons/bs";
-import { Link, Navigate } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { Link } from "react-router-dom";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Keyboard, Mousewheel } from "swiper";
@@ -37,11 +39,13 @@ import { RegisterButton } from "./RegisterButton";
 import { useSelector } from "react-redux";
 
 export const Navbar = () => {
+  const isDesktop = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { isAuth, token, isLoading, userName } = useSelector(
-    (store) => store.loginReducer
-  );
+  const { isAuth, userName } = useSelector((store) => store.loginReducer);
 
   return (
     <div
@@ -108,36 +112,27 @@ export const Navbar = () => {
           </SwiperSlide>
         </Swiper>
       </div>
-      <Box w="100%" p={4} color="rgb(22,122,146)" fontFamily={"inherit"}>
-        <Box
-          style={{
-            display: "flex",
-            gap: "20px",
-            justifyContent: "right",
-            height: "10px",
-            alignItems: "center",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-            <SlGlobeAlt style={{ fontSize: "25px" }} />
-            English ($)
-            <SlArrowDown />
-          </div>
+      {isDesktop && (
+        <Box w="100%" p={4} color="rgb(22,122,146)" fontFamily={"inherit"}>
+          <Box
+            style={{
+              display: "flex",
+              gap: "20px",
+              justifyContent: "right",
+              height: "10px",
+              alignItems: "center",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+              <SlGlobeAlt style={{ fontSize: "25px" }} />
+              English ($)
+              <SlArrowDown />
+            </div>
 
-          <Menu>
-            <MenuButton
-              as={Button}
-              _hover={{ color: "black" }}
-              style={{
-                display: "flex",
-
-                alignItems: "center",
-                gap: "5px",
-                background: "none",
-                fontFamily: "",
-              }}
-            >
-              <div
+            <Menu>
+              <MenuButton
+                as={Button}
+                _hover={{ color: "black" }}
                 style={{
                   display: "flex",
 
@@ -147,32 +142,49 @@ export const Navbar = () => {
                   fontFamily: "",
                 }}
               >
-                {" "}
-                <BiUser style={{ fontSize: "25px" }} />{userName?userName:"Sign In / Sign Up"}
-              </div>
-            </MenuButton>
-            <MenuList>
-              <MenuGroup title="Profile">
-                <MenuItem>Order History</MenuItem>
-                <MenuItem>Payments </MenuItem>
-              </MenuGroup>
-              <MenuDivider />
-              <MenuGroup title="">
-                {/* <MenuItem>Register</MenuItem> */}
-                <RegisterButton  isAuth={isAuth} />
-                {/* <MenuItem>Login</MenuItem> */}
-                <LoginButton
-                  isOpen={isOpen}
-                  onOpen={onOpen}
-                  onClose={onClose}
-                  userName={userName}
-                />
-              </MenuGroup>
-            </MenuList>
-          </Menu>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    background: "none",
+                    fontFamily: "",
+                  }}
+                >
+                  {" "}
+                  <BiUser style={{ fontSize: "25px" }} />
+                  {userName ? userName : "Sign In / Sign Up"}
+                </div>
+              </MenuButton>
+              <MenuList>
+                <MenuGroup title="Profile">
+                  <MenuItem>Order History</MenuItem>
+                  <MenuItem>Payments </MenuItem>
+                </MenuGroup>
+                <MenuDivider />
+                <MenuGroup title="">
+                  <RegisterButton isAuth={isAuth} />
+
+                  <LoginButton
+                    isOpen={isOpen}
+                    onOpen={onOpen}
+                    onClose={onClose}
+                    userName={userName}
+                  />
+                </MenuGroup>
+              </MenuList>
+            </Menu>
+          </Box>
         </Box>
-      </Box>
-      <Box style={{ display: "flex", alignItems: "center" }}>
+      )}
+
+      <Box
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
         <Box style={{ paddingLeft: "35px" }}>
           {" "}
           <Tabs position="relative" variant="unstyled">
@@ -194,10 +206,12 @@ export const Navbar = () => {
                     " rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
                 }}
               >
-                <div style={{ width: "200px" }}>
-                  {" "}
-                  <Image src={logo} />
-                </div>
+                {isDesktop && (
+                  <div style={{ width: "200px" }}>
+                    {" "}
+                    <Image src={logo} />
+                  </div>
+                )}
               </Tab>
             </TabList>
             <TabIndicator
@@ -208,94 +222,124 @@ export const Navbar = () => {
             />
           </Tabs>
         </Box>
+        {isDesktop ? (
+          <Box
+            style={{
+              display: "flex",
+              gap: "20px",
+              alignItems: "center",
+              justifyContent: "right",
+              width: "100%",
+              paddingRight: "20px",
+            }}
+          >
+            <div>
+              <InputGroup width={350}>
+                <Input
+                  style={{
+                    boxShadow:
+                      " rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
+                  }}
+                  placeholder="Search Fashionology"
+                />
+                <InputRightAddon cursor="pointer">
+                  <BiSearch style={{ borderColor: "1px solid black" }} />
+                </InputRightAddon>
+              </InputGroup>
+            </div>{" "}
+            <div>
+              {" "}
+              <Button
+                _hover={{ color: "black" }}
+                style={{ fontSize: "25px", background: "none" }}
+              >
+                <BsHandbag style={{ color: "rgb(22,122,146)" }} />
+              </Button>
+            </div>
+          </Box>
+        ) : (
+          <Button
+            _hover={{ color: "black" }}
+            style={{ fontSize: "25px", background: "none" }}
+          >
+            <GiHamburgerMenu />
+          </Button>
+        )}
+      </Box>
+      {isDesktop && (
         <Box
           style={{
-            display: "flex",
-            gap: "20px",
-            alignItems: "center",
-            justifyContent: "right",
-            width: "100%",
-            paddingRight: "20px",
+            boxShadow:
+              " rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
           }}
         >
-          <div>
-            <InputGroup width={350}>
-              <Input
-                style={{
-                  boxShadow:
-                    " rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
-                }}
-                placeholder="Search Fashionology"
-              />
-              <InputRightAddon cursor="pointer">
-                <BiSearch style={{ borderColor: "1px solid black" }} />
-              </InputRightAddon>
-            </InputGroup>
-          </div>{" "}
-          <div>
-            {" "}
-            <BsHandbag style={{ fontSize: "25px", color: "rgb(22,122,146)" }} />
-          </div>
-        </Box>
-      </Box>
-      <Box
-        style={{
-          boxShadow:
-            " rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
-        }}
-      >
-        <Tabs
-          style={{
-            margintop: "8px",
-            fontFamily: "sans-serif",
-            height: "60px",
-            display: "flex",
-          }}
-        >
-          <TabList
-          // style={{
-          //   display: "flex",
-          //   fontSize: "12px",
-          //   alignItems: "center",
-          //   height: "60px",
-          // }}
+          <Tabs
+            style={{
+              margintop: "8px",
+              fontFamily: "sans-serif",
+              height: "60px",
+              display: "flex",
+            }}
           >
-            <Tab textDecoration={"none"} fontSize={"small"}>
-              <Link to="" > New!</Link>
-            </Tab>
-            <Tab fontSize={"small"}>
-              <Link to=""> Gift for Mom</Link>
-            </Tab>
-            <Tab fontSize={"small"}>
-              <Link to=""> Dresses</Link>
-            </Tab>
-            <Tab fontSize={"small"}>
-              <Link to={{ pathname: "/productpage", search: "?category=clothing" }}> Clothing</Link>
-            </Tab>
-            <Tab fontSize={"small"}>
-              <Link to={{ pathname: "/productpage", search: "?category=shoes" }}> Shoes</Link>
-            </Tab>
-            <Tab fontSize={"small"}>
-              <Link to=""> Accessories</Link>
-            </Tab>
-            <Tab fontSize={"small"}>
-              <Link > Home & Furniture</Link>
-            </Tab>
-            <Tab fontSize={"small"}>
-              <Link to={{ pathname: "/productpage", search: "?category=Beauty&Wellness" }}> Beauty & Wellness</Link>
-            </Tab>
-            <Tab fontSize={"small"}>
-              <Link to=""> Garden & Outdoor</Link>
-            </Tab>
-            <Tab fontSize={"small"}>
-              <Link to=""> Weddings</Link>
-            </Tab>
-            <Tab fontSize={"small"}>
-              <Link to=""> Sale</Link>
-            </Tab>
-          </TabList>
-        </Tabs>
-      </Box>
+            <TabList>
+              <Tab textDecoration={"none"} fontSize={"small"}>
+                <Link to=""> New!</Link>
+              </Tab>
+              <Tab fontSize={"small"}>
+                <Link to=""> Gift for Mom</Link>
+              </Tab>
+              <Tab fontSize={"small"}>
+                <Link to=""> Dresses</Link>
+              </Tab>
+              <Tab fontSize={"small"}>
+                <Link
+                  to={{
+                    pathname: "/productpage",
+                    search: "?category=clothing",
+                  }}
+                >
+                  {" "}
+                  Clothing
+                </Link>
+              </Tab>
+              <Tab fontSize={"small"}>
+                <Link
+                  to={{ pathname: "/productpage", search: "?category=shoes" }}
+                >
+                  {" "}
+                  Shoes
+                </Link>
+              </Tab>
+              <Tab fontSize={"small"}>
+                <Link to=""> Accessories</Link>
+              </Tab>
+              <Tab fontSize={"small"}>
+                <Link> Home & Furniture</Link>
+              </Tab>
+              <Tab fontSize={"small"}>
+                <Link
+                  to={{
+                    pathname: "/productpage",
+                    search: "?category=Beauty&Wellness",
+                  }}
+                >
+                  {" "}
+                  Beauty & Wellness
+                </Link>
+              </Tab>
+              <Tab fontSize={"small"}>
+                <Link to=""> Garden & Outdoor</Link>
+              </Tab>
+              <Tab fontSize={"small"}>
+                <Link to=""> Weddings</Link>
+              </Tab>
+              <Tab fontSize={"small"}>
+                <Link to=""> Sale</Link>
+              </Tab>
+            </TabList>
+          </Tabs>
+        </Box>
+      )}
     </div>
   );
 };
