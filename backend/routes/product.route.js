@@ -7,12 +7,14 @@ const {ProductModel} = require("../models/product.model");
 const productRouter = express.Router();
 
 productRouter.get("/", async(req, res) => {
-    const {mainCategory, subCategory, page, limit} = req.query;
+    const {mainCategory, subCategory, minRating, page, limit} = req.query;
     const query = {};
 
     if(mainCategory) query.mainCategory = mainCategory;
 
     if(subCategory) query.subCategory = subCategory;
+
+    if(minRating) query.rating = {$gte:+minRating};
 
     try {
         const products = await ProductModel.find(query).skip((page-1)*limit).limit(+limit);
