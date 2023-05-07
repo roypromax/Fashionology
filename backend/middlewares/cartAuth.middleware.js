@@ -9,7 +9,7 @@ const cartAuth = (req, res, next) => {
       }
       const token = authHeader.split(" ")[1];
       jwt.verify(token, process.env.jwtSecret, (err, decoded) => {
-        console.log(decoded);
+        // console.log(decoded);
         if (err) {
           return res.status(401).json({ error: "Invalid token" });
         }
