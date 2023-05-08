@@ -38,7 +38,7 @@ export const Login = ({ onClose }) => {
         placeholder="Enter Your Password"
       />
 
-      <Button onClick={handleSumbit} colorScheme={"#d88c34;"}>
+      <Button onClick={handleSumbit} colorScheme={"#4B5666;"}>
         Login
       </Button>
     </Box>

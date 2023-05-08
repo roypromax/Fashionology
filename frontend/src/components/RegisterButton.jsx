@@ -13,11 +13,11 @@ import {
 
 import { Register } from "./Register";
 
-export const RegisterButton = ({ isAuth }) => {
+export const RegisterButton = ({ userName }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <div>
-      {isAuth?"":<MenuItem onClick={onOpen}>Register</MenuItem>}
+      {userName?"":<MenuItem onClick={onOpen}>Register</MenuItem>}
      
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
