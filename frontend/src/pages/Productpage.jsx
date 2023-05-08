@@ -5,11 +5,11 @@ import { useLocation } from "react-router-dom";
 import ProductCard from '../components/ProductCard';
 import { Box, Button, Center, Flex, Grid, Text } from '@chakra-ui/react';
 import { Footer } from '../components/Footer';
-import { Navbar } from '../components/Navbar';
-import { Sidebar } from '../components/Sidebar';
+import { Navbar } from '../components/Navbar'
+
 
 export const Productpage = () => {
-  
+  const [rating,setRating] = useState(0);
   const [page,setPage] = useState(1);
   let c = false
 if(page<2){
@@ -17,29 +17,27 @@ if(page<2){
 }
     const location = useLocation();
     const { category } = queryString.parse(location.search);
-    const subcategory=[];
+    let arr = [null];
+    const [ab,setAb]=React.useState([]);
     const [products, setProducts] = React.useState([]);
     const [order,setorder]=React.useState("")
-    const [subCategory,setSubCategory]=React.useState("")
-    const handleSort= (e) =>{
+    const [subCategory,setSubCategory]=React.useState([])
+          const handleSort= (e) =>{
       setorder(e.target.value)
           }
+         const handlecategory= (e) =>{
+      setSubCategory(e.target.value)
+     }
 
-          const handlecategory= (e) =>{
-            setSubCategory(e.target.value)
-                }
     const object={}
 
     React.useEffect(() => {
-        axios.get(`http://localhost:8080/products?mainCategory=${category}&limit=5&page=${page}&order=${order}&subCategory=${subCategory}`).then((response) => {
+        axios.get(`http://localhost:8080/products?mainCategory=${category}&limit=5&page=${page}&order=${order}&subCategory=${subCategory}&minRating=${rating}`).then((response) => {
             
           setProducts(response.data);
-          for(let key in object){
-            subcategory.push(key)
-          }
-          console.log(response)
+         
         });
-      }, [page,order]);
+      }, [page,order,subCategory]);
     
       React.useEffect(() => {
         axios.get(`http://localhost:8080/products?mainCategory=${category}`).then((response) => {
@@ -48,62 +46,151 @@ if(page<2){
           for(let i=0 ; i<response.data.length-1; i++){
             if(object[response.data[i].subCategory]===undefined){
               object[response.data[i].subCategory]=1
-            }else{
-              object[response.data[i].subCategory]++
-            }
-            
-          }
+    }else{
+     object[response.data[i].subCategory]++
+  }
+ }
           console.log(object)
+    for(let key in object){
+       arr.push(key)
+        }
+        setAb(arr)
+     console.log(arr)
+            
         });
-      }, [page]);
+      }, []);
 return (
     <>
     <Navbar/>
-    <Box><Box onChange={handleSort}>
-            <input type="radio" name="order" value={"asc"}   defaultChecked={order==="asc"}/>
-            <label>Ascending</label>
-            <input type="radio" name="order" value={"desc"}   defaultChecked={order==="desc"}/>
-            <label>Descending</label>
+   <Flex flexDirection={'row'}  >
+    <Flex flexDirection={'column'} width={'20%'} ml={'20px'} mt={'20px'}>
+      {/* pricefilter */}
+  <Flex direction={'column'} width={'100%'}>
+  <Text mb={'20px'} mt={'20px'} fontSize={{base:'8px',md:'10px',lg:'15px'}} fontWeight='bold'>Filter by Price</Text>
+   <Box onChange={handleSort} display={{base:'flex',md:'flex',lg:'flex'}} flexDirection={'column'} >
+    <Box fontSize={{base:'8px',md:'10px',lg:'15px'}}>
+    <input type="radio" name="order" value={"asc"}   defaultChecked={order==="asc"}/>
 
-        </Box>
-        <Box onChange={handlecategory}>
-        {subcategory.map((el)=>(<><input type="radio" name="subcategory" value={el}   defaultChecked={subCategory===el}/>
-            <label>Ascending</label></>))}
-        </Box>
-        </Box>
-        <Flex flexDirection={'row'}>
+<label>Low to High</label>
+    </Box>
+    <Box fontSize={{base:'8px',md:'10px',lg:'15px'}}>
+    <input type="radio" name="order" value={"desc"}   defaultChecked={order==="desc"}/>
+
+<label>High to Low</label>
+    </Box>
+   
+    
+
+    
+
+   </Box>
+  </Flex>
+  {/* price filter */}
+   
+  {/* /category filter */}
+<Flex direction={'column'}  width={'100%'}>
+<Text mb={'20px'} mt={'20px'} fontSize={{base:'8px',md:'10px',lg:'15px'}} fontWeight='bold'>Choose Category</Text>
+<Box onChange={handlecategory} display={{base:'flex',md:'flex',lg:'flex'}} flexDirection={'column'} >
+{ab.map((el)=>(
+  <Box fontSize={{base:'8px',md:'10px',lg:'15px'}} >
+  
+    <input type="radio" name="subcategory" value={el}   defaultChecked={order==={el}}/>
+    {(el)?<label>{el}</label>:<label>All</label>}
+    
+  </Box>))}
+</Box>
+ 
+</Flex>
+    
+  
+   {/* 
+  
+  
+   {/* category filter */}
+
+   {/* rating  */}
+   <Flex direction={'column'}  width={'100%'}>
+<Text mb={'20px'} mt={'20px'} fontSize={{base:'8px',md:'10px',lg:'15px'}} fontWeight='bold'>Filter by Rating</Text>
+<Box  display={{base:'flex',md:'flex',lg:'flex'}} flexDirection={'column'} >
+
+  <Box fontSize={{base:'8px',md:'10px',lg:'15px'}} >
+  
+    
+  <Button
+  onClick={()=>{setRating(2.5)}}
+        px={4}
+        fontSize={{base:'8px',md:'10px',lg:'15px'}}
+        rounded={'full'}
+        width={{base:'2px'}}
+        bg={'#4B5666'}
+        color={'white'}
+        
+       
+        >
+        2.5
+      </Button>
+      <Button
+      onClick={()=>{setRating(3.5)}}
+        px={4}
+        fontSize={{base:'8px',md:'10px',lg:'15px'}}
+        rounded={'full'}
+        
+        bg={'#4B5666'}
+        color={'white'}
+       
+        >
+      3.5
+      </Button>
+      <Button
+      onClick={()=>{setRating(4.5)}}
+        px={4}
+        fontSize={{base:'8px',md:'10px',lg:'15px'}}
+        rounded={'full'}
+        
+        bg={'#4B5666'}
+        color={'white'}
+       
+        >
+        4.5
+      </Button>
+  </Box>
+</Box>
+ 
+</Flex>
+   {/* rating */}
+    </Flex>
+    
+  
+  
+  
+  <Flex flexDirection={'column'}  width={'80%'}>
        
    
-      <Box display={'flex'} flexDirection={'column'}>
         
-      <Grid templateColumns='repeat(3, 1fr)' columnGap={70} rowGap={50} >
+   <Grid templateColumns={{ base: 'repeat(1, 1fr)',  md: 'repeat(2, 1fr)',lg:'repeat(3, 1fr)'} } columnGap={20} rowGap={10} mt={"60px"} >
       {products.map((el)=>(<ProductCard key={el.id} _id={el._id} name={el.name} images={el.images} price={el.price}/>))}
-
-    </Grid>
+   </Grid>
    
       
     
     <Flex h="20vh"  m='auto' >
      
     <Button
-        
-        /* flex={1} */
         px={4}
         fontSize={'sm'}
         rounded={'full'}
         
-        bg={'#4B5666'}
+        bg={ '#4B5666'}
         color={'white'}
-        boxShadow={
-          '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
-        }
+        boxShadow={'0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'}
         _hover={{
           bg: 'blue.500',
         }}
         _focus={{
           bg: 'blue.500',
         }}
-        disabled={c} onClick={()=>{setPage(page-1) }}>
+        disabled={c} onClick={()=>{setPage(page-1) }}
+        >
         Prev
       </Button>
       
@@ -115,9 +202,7 @@ return (
         rounded={'full'}
         bg={'#4B5666'}
         color={'white'}
-        boxShadow={
-          '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
-        }
+        boxShadow={'0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'}
         _hover={{
           bg: 'blue.500',
         }}
@@ -128,11 +213,9 @@ return (
         Next
       </Button>
     </Flex>
-      </Box>
       
-    
-        </Flex>
-    
+       </Flex>
+        </Flex> 
     <Footer/>
    </>
   )
