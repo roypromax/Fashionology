@@ -37,7 +37,7 @@ if(page<2){
           setProducts(response.data);
          
         });
-      }, [page,order,subCategory]);
+      }, [page,order,subCategory,rating]);
     
       React.useEffect(() => {
         axios.get(`http://localhost:8080/products?mainCategory=${category}`).then((response) => {
@@ -63,7 +63,7 @@ return (
     <>
     <Navbar/>
    <Flex flexDirection={'row'}  >
-    <Flex flexDirection={'column'} width={'20%'} ml={'20px'} mt={'20px'}>
+    <Flex flexDirection={'column'} width={'20%'} ml={'20px'} mt={'20px'} display={{base:'none',md:'none',lg:'block'}}>
       {/* pricefilter */}
   <Flex direction={'column'} width={'100%'}>
   <Text mb={'20px'} mt={'20px'} fontSize={{base:'8px',md:'10px',lg:'15px'}} fontWeight='bold'>Filter by Price</Text>
@@ -117,7 +117,7 @@ return (
   
     
   <Button
-  onClick={()=>{setRating(2.5)}}
+  onClick={()=>{setRating(3.5)}}
         px={4}
         fontSize={{base:'8px',md:'10px',lg:'15px'}}
         rounded={'full'}
@@ -127,10 +127,10 @@ return (
         
        
         >
-        2.5
+        3.5
       </Button>
       <Button
-      onClick={()=>{setRating(3.5)}}
+      onClick={()=>{setRating(4)}}
         px={4}
         fontSize={{base:'8px',md:'10px',lg:'15px'}}
         rounded={'full'}
@@ -139,7 +139,7 @@ return (
         color={'white'}
        
         >
-      3.5
+      4
       </Button>
       <Button
       onClick={()=>{setRating(4.5)}}
