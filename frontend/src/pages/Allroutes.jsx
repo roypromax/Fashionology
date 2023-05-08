@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import { Home } from './Home'
 import { Productpage } from './Productpage'
 import SingleProduct from './SingleProduct'
+import Cart from './Cart'
 export const Allroutes = () => {
   return (
     <Routes>
@@ -11,7 +12,7 @@ export const Allroutes = () => {
 <Route path="*" element={<h1>404 page not found</h1>}/>
 <Route path="/productpage" element={<Productpage/>}/>
 <Route path="/productpage/:id" element={<SingleProduct/>}/>
-
+<Route path="/cart" element={<Cart/>}/>
     </Routes>
   )
 }
