@@ -316,17 +316,14 @@ export const Navbar = () => {
                 </Link>
               </Tab>
               <Tab fontSize={"small"}>
-                <Link to=""> Accessories</Link>
+                <Link to={{ pathname: "/productpage", search: "?category=accessories" }}> Accessories</Link>
               </Tab>
               <Tab fontSize={"small"}>
-                <Link> Home & Furniture</Link>
+                <Link > Home & Furniture</Link>
               </Tab>
               <Tab fontSize={"small"}>
                 <Link
-                  to={{
-                    pathname: "/productpage",
-                    search: "?category=Beauty&Wellness",
-                  }}
+                  to={{ pathname: "/productpage", search: "?category=beauty & wellness" }}
                 >
                   {" "}
                   Beauty & Wellness
