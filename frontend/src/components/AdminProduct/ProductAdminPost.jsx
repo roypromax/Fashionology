@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { addProducts } from "../../Redux/productsReducers/action";
+import axios from 'axios'
 
 const initialState = {
   name: "",
-  rating: "",
-  price: "",
-  sizes: "",
-  quantity: "",
+  rating: 0,
+  price: 0,
+  sizes: [],
+  quantity: 0,
   color: "",
   mainCategory: "",
   subCategory: "",
-  images: "",
+  images: [],
   brand: "",
   description: "",
 };
@@ -31,10 +32,20 @@ const ProductAdminPost = () => {
     });
   };
 
+  let userData = JSON.parse(localStorage.getItem("userData")) || []
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addProducts(product));
+    console.log(product, userData.token)
+    axios.post("http://localhost:8080/products/add", product, {
+         headers: { 
+           "Content-Type": "application/json",
+           Authorization:`Bearer ${userData.token}` 
+}})
+.then((res)=>console.log(res.data))
+
+    // dispatch(addProducts(product));
     // console.log(product)
+
     setProduct(initialState);
   };
   return (
