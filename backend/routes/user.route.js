@@ -39,6 +39,7 @@ userRouter.post("/login",async(req,res)=>{
             if(err || !result){
 
                 res.status(400).json({msg:"Invalid email or password"});
+                
             }else{
                 const token = jwt.sign({userId:user._id,userName:user.name,userRole:user.role},process.env.jwtSecret);
                 res.status(200).json({msg:"Login Successful",token:token,user:user.name});
