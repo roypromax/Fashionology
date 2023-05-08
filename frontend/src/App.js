@@ -1,16 +1,10 @@
-import './App.css';
-
-import { Home } from './pages/Home';
-import { Footer } from './components/Footer';
-import { Productpage } from './pages/Productpage';
-import { Allroutes } from './pages/Allroutes';
-import ProductAdminList from './components/AdminProduct/ProductAdminList';
-
+import "./App.css";
+import { Allroutes } from "./pages/Allroutes";
 function App() {
   return (
     <div className="App">
-    {/* <ProductAdminList/> */}
-      <Allroutes/>
+      <Allroutes />
+      {/* <ProductAdminList /> */}
     </div>
   );
 }

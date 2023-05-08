@@ -51,7 +51,7 @@
 }
 
 .ratingDiv {
-  background-color: #4B5666;
+  background-color: #4b5666;
   color: white;
   padding: 3px;
   border-radius: 3px;
@@ -78,8 +78,8 @@
 
 .sizesSelectionLabel {
   cursor: pointer;
-  background-color: #F7F6F2;
-  padding:5px;
+  background-color: #f7f6f2;
+  padding: 5px;
   width: 50px;
   /* border: 1px solid black; */
   font-size: 16px;
@@ -90,7 +90,7 @@
 
 .addToCartButton {
   padding: 10px 20px;
-  background-color: #4B5666;
+  background-color: #4b5666;
   border: none;
   color: white;
   font-size: 16px;
@@ -99,6 +99,6 @@
 
 .addToCartButton:hover {
   background-color: white;
-  border: 1px solid #4B5666;
-  color: #4B5666;
+  border: 1px solid #4b5666;
+  color: #4b5666;
 }

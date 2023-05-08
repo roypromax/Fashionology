@@ -5,7 +5,8 @@ import { useLocation } from "react-router-dom";
 import ProductCard from '../components/ProductCard';
 import { Box, Button, Center, Flex, Grid, Text } from '@chakra-ui/react';
 import { Footer } from '../components/Footer';
-import { Navbar } from '../components/Navbar'
+import { Navbar } from '../components/Navbar';
+
 
 
 export const Productpage = () => {
