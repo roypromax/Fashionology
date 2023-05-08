@@ -16,6 +16,8 @@ import { HiOutlineCurrencyDollar } from "react-icons/hi";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 
 export const Checkout = () => {
+
+   let cartData = JSON.parse(localStorage.getItem("cartData")) || null;
   return (
     <Box style={{ background: "rgb(22,122,146)" }}>
       <Box maxW="800px" mx="auto" p="6">

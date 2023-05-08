@@ -6,8 +6,9 @@ export const PrivateRoute = ({children}) => {
   const {onOpen } = useDisclosure();
   
   const {userName} = useSelector((store) => {
+ 
     return store.loginReducer;
   });
 
-  return userName ? children: onOpen()
+  return userName  ? children: onOpen()
 }

@@ -28,9 +28,9 @@ const LandingPage = () => {
     <Wrapper>
       <Content>
         <Header>
-          {imgFirst.map((e) => (
-            <TopGridImages>
-              <NavLink to="">
+          {imgFirst.map((e, index) => (
+            <TopGridImages key={index}>
+              <NavLink key={index} to="">
                 <img style={{ width: "100%" }} src={e.url} alt="img first" />
               </NavLink>
             </TopGridImages>

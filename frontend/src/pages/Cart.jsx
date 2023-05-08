@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
 import styles from "./Cart.module.css";
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
@@ -11,6 +12,8 @@ let userData = JSON.parse(localStorage.getItem("userData")) || null;
 function Cart() {
 
   const [cart,setCart] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(()=>{
     axios.get(`${url}/cart`,{
@@ -74,6 +77,8 @@ function Cart() {
   }
 
   function onCheckout(){
+    localStorage.setItem("cartData",JSON.stringify({cart:cart,totalPrice:(totalPrice()-(totalPrice()*.10)).toFixed(2)}))
+    navigate("/checkout");
   }
 
   if(cart.length===0){
