@@ -37,4 +37,14 @@ cartRouter.delete("/delete",async(req,res)=>{
     }
 })
 
+cartRouter.patch("/update/:id",async(req,res)=>{
+    const id = req.params.id;
+    try {
+        await CartModel.findByIdAndUpdate({_id:id},req.body);
+        res.status(200).json({message:`Cart item with id : ${id} has been updated`})
+    } catch (error) {
+        res.status(400).json({error: error.message});
+    }
+})
+
 module.exports = {cartRouter};
