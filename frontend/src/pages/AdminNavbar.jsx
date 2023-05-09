@@ -47,7 +47,7 @@ export default function Nav() {
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <Box style={{width:'40%', marginRight:'20px'}}>
-          <NavLink to='/'>
+          <NavLink to='/adminhome'>
             <img style={{width:'40%'}} src={fashionoLogy} alt=""/>
           </NavLink>
           </Box>

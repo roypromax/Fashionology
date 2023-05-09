@@ -11,6 +11,7 @@ import axios from "axios";
 const ProductAdminList = () => {
   const [ref, setRef] = useState(false);
   const [page, setPage] = useState(1);
+ const [order, setOrder] = useState("")
 
 
   const [product, setProduct] = useState([]);
@@ -26,40 +27,17 @@ const ProductAdminList = () => {
 
 
   const { products } = useSelector((store) => store.productsReducers);
+
   useEffect(() => {
-    dispatch(getProducts());
-    getProductsdata(page)
-  }, [ref, page]);
+    dispatch(getProducts(page, limit, order));
+    // getProductsdata(page)
+  }, [ref, page, limit, order]);
 
   const updateRef = () => {
     setRef((prev) => !prev);
   };
 
   
-  const getProductsdata = () => {
-
-    setLoading(true)
-    axios.get(`https://sleepy-erin-sheep.cyclic.app/products?_limit=${limit}&_page=${page}`)
-
-    .then((res)=>{
-      console.log(res);
-
-     return res.json()
-    })
-    .then((data)=>{
-      setProduct(data)
-      setLoading(false)
-    })
-    .catch(()=>{
-      setError(true)
-      setLoading(false)
-    })
-  }
-
-  // useEffect(()=>{
-  //   getProductsdata(page)
-  // },[page])
-
   const paginate = (val) => {
     setPage(page+val)
   }
@@ -68,7 +46,12 @@ const ProductAdminList = () => {
   return (
     <DivForm>
       <Nav />
-
+      <DIVSEL>
+      <select onChange={(e) => setOrder(e.target.value)}>
+        <option value='desc'>High to low</option>
+        <option value='asc'>Low to High</option>
+      </select>
+     </DIVSEL>
       <h1
         style={{
           color: "#430707",
@@ -87,11 +70,6 @@ const ProductAdminList = () => {
             return <ProductAdminCart key={el._id} {...el} fn={updateRef} />;
           })}
       </DIV>
-      {/* <DIVBTN>
-          <button   disabled={page === 1} onClick={()=>setPage(page-1) } >Prev</button>
-          <button disabled={page === 1}>{page}</button>
-          <button   disabled={page === totalPage} onClick={()=>setPage(page+1)}>Next</button>
-        </DIVBTN> */}
 
       <div>
       <Productpagination page={page} paginate={paginate} 
@@ -99,6 +77,7 @@ const ProductAdminList = () => {
 
       />
      </div>
+     
     </DivForm>
   );
 };
@@ -150,3 +129,15 @@ const DIV = styled.div`
     gap: 20px;
   }
 `;
+
+const DIVSEL = styled.div`
+width:100%;
+height:100px;
+text-align: center;
+margin-top: 50px;
+select{
+    width: 50%;
+    height: 50px;
+    border: 1px solid black;
+}
+`
