@@ -13,7 +13,7 @@ let userData = JSON.parse(localStorage.getItem("userData")) || []
 export const addProducts = () => (dispatch) => {
           dispatch({type:PRODUCT_REQUEST})
           console.log(userData);
-      axios.post("http://localhost:8080/products/add", {
+      axios.post("https://sleepy-erin-sheep.cyclic.app/products/add", {
          headers: {
            "Content-Type": "application/json",
            Authorization:`Bearer ${userData.token}`
@@ -31,7 +31,7 @@ export const addProducts = () => (dispatch) => {
 
 export const getProducts =(paramObj) => (dispatch) => {
    dispatch({type:PRODUCT_REQUEST})
-   axios.get("http://localhost:8080/products", paramObj).then((res)=>{
+   axios.get("https://sleepy-erin-sheep.cyclic.app/products", paramObj).then((res)=>{
       dispatch({type: GET_PRODUCT_SUCCESS, payload:res.data})
    }).catch(()=>{
       dispatch({type: PRODUCT_FAILURE})
@@ -43,7 +43,7 @@ export const getProducts =(paramObj) => (dispatch) => {
 export const editProduct = (dataObj, id) => (dispatch) => {
   dispatch({type:PRODUCT_REQUEST})
   
-   return axios.patch(`http://localhost:8080/products/update/${id}`, dataObj,{
+   return axios.patch(`https://sleepy-erin-sheep.cyclic.app/products/update/${id}`, dataObj,{
       headers: { 
          "Content-Type": "application/json",
          Authorization:`Bearer ${userData.token}` 
@@ -71,3 +71,5 @@ export const editProduct = (dataObj, id) => (dispatch) => {
 //        .catch((error) => console.log(error));
 //    };
 //  };
+
+

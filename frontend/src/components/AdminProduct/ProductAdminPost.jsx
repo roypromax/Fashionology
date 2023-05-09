@@ -36,7 +36,7 @@ const ProductAdminPost = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(product, userData.token)
-    axios.post("http://localhost:8080/products/add", product, {
+    axios.post("https://sleepy-erin-sheep.cyclic.app/products/add", product, {
          headers: { 
            "Content-Type": "application/json",
            Authorization:`Bearer ${userData.token}` 
