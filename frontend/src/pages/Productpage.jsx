@@ -8,57 +8,59 @@ import { Navbar } from "../components/Navbar";
 import ProductCard from "../components/ProductCard";
 
 export const Productpage = () => {
-  const [rating, setRating] = useState(0);
-  const [page, setPage] = useState(1);
-  let c = false;
-  if (page < 2) {
-    c = true;
-  }
-  const location = useLocation();
-  const { category } = queryString.parse(location.search);
-  let arr = [null];
-  const [ab, setAb] = React.useState([]);
-  const [products, setProducts] = React.useState([]);
-  const [order, setorder] = React.useState("");
-  const [subCategory, setSubCategory] = React.useState([]);
-  const [loading, setLoading] = useState(true);
 
-  const handleSort = (e) => {
-    setorder(e.target.value);
-  };
-  const handlecategory = (e) => {
-    setSubCategory(e.target.value);
-  };
-
-  const object = {};
-
-  React.useEffect(() => {
-    try {
-      axios
-        .get(
-          `http://localhost:8080/products?mainCategory=${category}&limit=6&page=${page}&order=${order}&subCategory=${subCategory}&minRating=${rating}`
-        )
-        .then((response) => {
+  const [rating,setRating] = useState(0);
+  const [page,setPage] = useState(1);
+  let c = false
+if(page<2){
+  c=true
+}
+    const location = useLocation();
+    const { category } = queryString.parse(location.search);
+    let arr = [null];
+    const [ab,setAb]=React.useState([]);
+    const [products, setProducts] = React.useState([]);
+    const [order,setorder]=React.useState("")
+    const [subCategory,setSubCategory]=React.useState([])
+    const [loading,setLoading] = useState(true)
+    
+          const handleSort= (e) =>{
+      setorder(e.target.value)
+          }
+         const handlecategory= (e) =>{
+      setSubCategory(e.target.value)
+     }
+     
+    const object={}
+    
+    React.useEffect(() => {
+      
+      try {
+        axios.get(`https://sleepy-erin-sheep.cyclic.app/products?mainCategory=${category}&limit=6&page=${page}&order=${order}&subCategory=${subCategory}&minRating=${rating}`).then((response) => {
+            
           setProducts(response.data);
           setLoading(false);
         });
-    } catch (error) {
-      console.log(error);
-    }
-  }, [loading, category, page, order, subCategory, rating]);
 
-  React.useEffect(() => {
-    try {
-      axios
-        .get(`http://localhost:8080/products?mainCategory=${category}`)
-        .then((response) => {
-          for (let i = 0; i <= response.data.length - 1; i++) {
-            if (object[response.data[i].subCategory] === undefined) {
-              object[response.data[i].subCategory] = 1;
-            } else {
-              object[response.data[i].subCategory]++;
-            }
-          }
+      } catch (error) {
+        console.log(error)
+      }
+          
+      }, [loading,category,page,order,subCategory,rating]);
+    
+      React.useEffect(() => {
+        try {
+          axios.get(`https://sleepy-erin-sheep.cyclic.app/products?mainCategory=${category}`).then((response) => {
+            
+         
+          for(let i=0 ; i<=response.data.length-1; i++){
+            if(object[response.data[i].subCategory]===undefined){
+              object[response.data[i].subCategory]=1
+    }else{
+     object[response.data[i].subCategory]++
+  }
+ }
+
           // console.log(object)
           for (let key in object) {
             arr.push(key);

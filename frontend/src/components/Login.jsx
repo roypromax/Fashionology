@@ -1,12 +1,20 @@
-import { Box, Button, Heading, Input, Progress, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Heading,
+  Input,
+  Progress,
+  useToast,
+} from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../Redux/loginReducer/action";
+import { useNavigate } from "react-router-dom";
 
 export const Login = ({ onClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   const { isLoading } = useSelector((store) => store.loginReducer);
   const toast = useToast();
 
@@ -17,7 +25,7 @@ export const Login = ({ onClose }) => {
       email,
       password,
     };
-    dispatch(login(payload, onClose, toast, setEmail, setPassword));
+    dispatch(login(payload, onClose, toast, setEmail, setPassword, navigate));
     setEmail("");
     setPassword("");
   };
