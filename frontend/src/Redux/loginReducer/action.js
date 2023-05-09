@@ -14,7 +14,7 @@ export const login =
     } else {
       dispatch({ type: LOGIN_REQUEST });
       return axios
-        .post("http://localhost:8080/users/login", userData)
+        .post("https://sleepy-erin-sheep.cyclic.app/users/login", userData)
         .then((response) => {
           const userData = {
             token: response.data.token,
