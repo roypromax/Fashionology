@@ -24,7 +24,7 @@ export const Checkout = () => {
   const handleCheckout = () => {
     localStorage.removeItem("cartData");
     window.location.href = "/";
-    axios.delete(`${url}/cart/delete`, {
+    axios.delete(`${url}cart/delete`, {
       headers: {
         Authorization: `Bearer ${userData?.token}`,
         "Content-Type": "application/json",
