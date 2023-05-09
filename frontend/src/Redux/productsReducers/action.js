@@ -29,9 +29,9 @@ export const addProducts = () => (dispatch) => {
 
 //get
 
-export const getProducts =(paramObj) => (dispatch) => {
+export const getProducts =(page, limit, order) => (dispatch) => {
    dispatch({type:PRODUCT_REQUEST})
-   axios.get("https://sleepy-erin-sheep.cyclic.app/products", paramObj).then((res)=>{
+   axios.get(`https://sleepy-erin-sheep.cyclic.app/products?limit=${limit}&page=${page}&order=${order}`).then((res)=>{
       dispatch({type: GET_PRODUCT_SUCCESS, payload:res.data})
    }).catch(()=>{
       dispatch({type: PRODUCT_FAILURE})
