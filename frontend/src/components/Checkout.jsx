@@ -11,12 +11,26 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import axios from "axios";
 import { FaCreditCard, FaMapMarkerAlt } from "react-icons/fa";
 import { HiOutlineCurrencyDollar } from "react-icons/hi";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 
+const url = "https://sleepy-erin-sheep.cyclic.app/";
+
 export const Checkout = () => {
   let cartData = JSON.parse(localStorage.getItem("cartData")) || null;
+  let userData = JSON.parse(localStorage.getItem("userData")) || null;
+  const handleCheckout = () => {
+    localStorage.removeItem("cartData");
+    window.location.href = "/";
+    axios.delete(`${url}/cart/delete`, {
+      headers: {
+        Authorization: `Bearer ${userData?.token}`,
+        "Content-Type": "application/json",
+      },
+    });
+  };
 
   return (
     <Box style={{ background: "rgb(22,122,146)" }}>
@@ -137,7 +151,12 @@ export const Checkout = () => {
                   <Text fontWeight="bold">$ {cartData.totalPrice}</Text>
                 </Stack>
               </Box>
-              <Button mt="4" w="100%" colorScheme="#4B5666;">
+              <Button
+                onClick={handleCheckout}
+                mt="4"
+                w="100%"
+                colorScheme="#4B5666;"
+              >
                 Place Order
               </Button>
             </Box>
