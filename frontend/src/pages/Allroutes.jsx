@@ -1,17 +1,23 @@
-import { Checkout } from "../components/Checkout";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import ProductAdminEdit from "../components/AdminProduct/ProductAdminEdit";
+import ProductAdminList from "../components/AdminProduct/ProductAdminList";
+import ProductAdminPost from "../components/AdminProduct/ProductAdminPost";
+import { Checkout } from "../components/Checkout";
+import AdminHomePage from "./AdminHomePage";
+import Cart from "./Cart";
 import { Home } from "./Home";
 import { Productpage } from "./Productpage";
 import SingleProduct from "./SingleProduct";
-import ProductAdminList from "../components/AdminProduct/ProductAdminList";
-import ProductAdminPost from "../components/AdminProduct/ProductAdminPost";
-import Cart from "./Cart";
+
 import { PrivateRoute } from "../components/PrivateRoute";
 
 export const Allroutes = () => {
   return (
     <Routes>
+      <Route path="/adminedit/:id" element={<ProductAdminEdit />} />
+      <Route path="/adminhome" element={<AdminHomePage />} />
+      <Route path="/cart" element={<Cart />} />
       <Route path="/" element={<Home />} />
       <Route path="/login" element="" />
       <Route path="*" element={<h1>404 page not found</h1>} />

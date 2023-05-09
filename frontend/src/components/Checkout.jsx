@@ -120,7 +120,7 @@ export const Checkout = () => {
                       >
                         {data.name}
                       </Text>
-                      <Text>₹ {data.price}</Text>
+                      <Text>$ {data.price}</Text>
                     </Stack>{" "}
                   </Box>
                 );
@@ -134,7 +134,7 @@ export const Checkout = () => {
 
                 <Stack direction="row" justify="space-between">
                   <Text fontWeight="bold">Total</Text>
-                  <Text fontWeight="bold">₹ {cartData.totalPrice}</Text>
+                  <Text fontWeight="bold">$ {cartData.totalPrice}</Text>
                 </Stack>
               </Box>
               <Button mt="4" w="100%" colorScheme="#4B5666;">
