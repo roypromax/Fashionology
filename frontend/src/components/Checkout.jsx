@@ -16,8 +16,8 @@ import { HiOutlineCurrencyDollar } from "react-icons/hi";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 
 export const Checkout = () => {
+  let cartData = JSON.parse(localStorage.getItem("cartData")) || null;
 
-   let cartData = JSON.parse(localStorage.getItem("cartData")) || null;
   return (
     <Box style={{ background: "rgb(22,122,146)" }}>
       <Box maxW="800px" mx="auto" p="6">
@@ -106,28 +106,35 @@ export const Checkout = () => {
               <Heading size="md" mb="4">
                 Order Summary
               </Heading>
-              <Box borderBottomWidth="1px" py="2">
-                <Stack direction="row" justify="space-between">
-                  <Text>Product Name</Text>
-                  <Text>23234</Text>
-                </Stack>
-              </Box>
-              <Box borderBottomWidth="1px" py="2">
-                <Stack direction="row" justify="space-between">
-                  <Text>Product Name</Text>
-                  <Text>23343</Text>
-                </Stack>
-              </Box>
-              <Box borderBottomWidth="1px" py="2">
-                <Stack direction="row" justify="space-between">
-                  <Text>Product Name</Text>
-                  <Text>23432</Text>
-                </Stack>
-              </Box>
+              {cartData.cart.map((data, i) => {
+                return (
+                  <Box key={i} borderBottomWidth="1px" py="2">
+                    <Stack direction="row" justify="space-between">
+                      <Text
+                        style={{
+                          whiteSpace: "nowrap",
+                          width: "150px",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
+                        {data.name}
+                      </Text>
+                      <Text>₹ {data.price}</Text>
+                    </Stack>{" "}
+                  </Box>
+                );
+              })}
+
               <Box py="2">
                 <Stack direction="row" justify="space-between">
+                  <Text fontWeight="bold">Discount</Text>
+                  <Text fontWeight="bold">10 %</Text>
+                </Stack>
+
+                <Stack direction="row" justify="space-between">
                   <Text fontWeight="bold">Total</Text>
-                  <Text fontWeight="bold">$23543464</Text>
+                  <Text fontWeight="bold">₹ {cartData.totalPrice}</Text>
                 </Stack>
               </Box>
               <Button mt="4" w="100%" colorScheme="#4B5666;">

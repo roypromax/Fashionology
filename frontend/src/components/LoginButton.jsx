@@ -12,6 +12,7 @@ import {
 export const LoginButton = ({ isOpen, onOpen, onClose, userName }) => {
   const handleLogout = () => {
     localStorage.removeItem("userData");
+    localStorage.removeItem("cartData")
     window.location.href = "/";
   };
 
