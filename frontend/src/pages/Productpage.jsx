@@ -6,7 +6,10 @@ import ProductCard from '../components/ProductCard';
 import { Box, Button, Center, Flex, Grid, Text } from '@chakra-ui/react';
 import { Footer } from '../components/Footer';
 import { Navbar } from '../components/Navbar';
+<<<<<<< HEAD
+=======
 import { Spinner } from '@chakra-ui/react'
+>>>>>>> b9eba181cd813e85fbce6e92c40f27618b57165a
 
 
 export const Productpage = () => {

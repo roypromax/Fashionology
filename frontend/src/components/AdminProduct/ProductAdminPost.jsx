@@ -1,18 +1,19 @@
+import axios from 'axios';
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import styled from "styled-components";
-import { addProducts } from "../../Redux/productsReducers/action";
+import styled from 'styled-components';
+import Nav from '../../pages/AdminNavbar';
 
 const initialState = {
   name: "",
-  rating: "",
-  price: "",
-  sizes: "",
-  quantity: "",
+  rating: 0,
+  price: 0,
+  sizes: [],
+  quantity: 0,
   color: "",
   mainCategory: "",
   subCategory: "",
-  images: "",
+  images: [],
   brand: "",
   description: "",
 };
@@ -31,16 +32,33 @@ const ProductAdminPost = () => {
     });
   };
 
+  let userData = JSON.parse(localStorage.getItem("userData")) || []
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addProducts(product));
+    console.log(product, userData.token)
+    axios.post("http://localhost:8080/products/add", product, {
+         headers: { 
+           "Content-Type": "application/json",
+           Authorization:`Bearer ${userData.token}` 
+}})
+.then((res)=>console.log(res.data))
+alert("Products Added Successfully")
+    // dispatch(addProducts(product));
     // console.log(product)
+
     setProduct(initialState);
   };
   return (
+    <DIVform style={{ height: "auto", width: "100%",  textAlign:'center'}}>
+<Nav/>
+<h2 style={{color: "#430707", fontSize: "30px", fontWeight: 'bold', marginTop:'20px'}}>Add Products Page</h2>
+
     <DIV>
-      <h2>Add Product Page</h2>
+
       <form onSubmit={handleSubmit}>
+
+      <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'99%',  fontSize:'16px'}}>
+      <span>Image :</span>
         <input
           text="text"
           value={product.images}
@@ -50,7 +68,10 @@ const ProductAdminPost = () => {
           }}
           name="images"
         />
+      </div>
 
+    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'100%',  paddingLeft:'8px',fontSize:'16px'}}>
+      <span>Title :</span>
         <input
           text="text"
           value={product.name}
@@ -60,7 +81,11 @@ const ProductAdminPost = () => {
           }}
           name="name"
         />
+        </div>
 
+    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'99%',  
+    paddingLeft:'2px',fontSize:'16px'}}>
+      <span>Rating :</span>
         <input
           text="number"
           value={product.rating}
@@ -69,8 +94,10 @@ const ProductAdminPost = () => {
             handleChange(e);
           }}
           name="rating"
-        />
+        /></div>
 
+    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', paddingLeft:'8px',width:'100%',  fontSize:'16px'}}>
+      <span>Price :</span>
         <input
           text="number"
           value={product.price}
@@ -80,6 +107,11 @@ const ProductAdminPost = () => {
           }}
           name="price"
         />
+</div>
+
+<div style={{display:'flex', justifyContent:'space-around', alignItems:'center',
+paddingLeft:'9px', width:'100%',  fontSize:'16px'}}>
+      <span>Sizes :</span>
 
         <select
           name="sizes"
@@ -95,7 +127,10 @@ const ProductAdminPost = () => {
           <option value='XXL'>XXL</option> 
           <option value='XS'>XS</option>
         </select>
-
+        </div>
+    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'98%',  
+    paddingLeft:'0px',fontSize:'16px'}}>
+      <span>Quantity :</span>
         <input
           text="number"
           value={product.quantity}
@@ -104,8 +139,11 @@ const ProductAdminPost = () => {
             handleChange(e);
           }}
           name="quantity"
-        />
+        /></div>
 
+    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'100%',  
+    paddingLeft:'16px',fontSize:'16px'}}>
+      <span>Color :</span>
         <input
           text="text"
           value={product.color}
@@ -114,8 +152,11 @@ const ProductAdminPost = () => {
             handleChange(e);
           }}
           name="color"
-        />
+        /></div>
 
+    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'95%',  
+    paddingLeft:'0px',fontSize:'16px'}}>
+      <span>MainCategory :</span>
         <input
           text="text"
           value={product.mainCategory}
@@ -124,8 +165,11 @@ const ProductAdminPost = () => {
             handleChange(e);
           }}
           name="mainCategory"
-        />
+        /></div>
 
+    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'95%',  
+    paddingLeft:'3px',fontSize:'16px'}}>
+      <span>SubCategory :</span>
         <input
           text="text"
           value={product.subCategory}
@@ -135,7 +179,11 @@ const ProductAdminPost = () => {
           }}
           name="subCategory"
         />
+        </div>
 
+    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'99%',  
+    paddingLeft:'20px',fontSize:'16px'}}>
+      <span>Brand :</span>
         <input
           text="text"
           value={product.brand}
@@ -144,8 +192,11 @@ const ProductAdminPost = () => {
             handleChange(e);
           }}
           name="brand"
-        />
+        /></div>
 
+    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'96%',  
+    paddingLeft:'0px',fontSize:'16px'}}>
+      <span>Description :</span>
         <input
           text="text"
           value={product.description}
@@ -154,29 +205,41 @@ const ProductAdminPost = () => {
             handleChange(e);
           }}
           name="description"
-        />
+        /></div>
+
         <button type="submit">Submit</button>
       </form>
     </DIV>
+    </DIVform>
   );
 };
 
 export default ProductAdminPost;
 
+const DIVform = styled.div``;
+
 const DIV = styled.div`
-  width: 400px;
+  width: 900px;
+  height: auto;
+  padding-top:10px;
+  background-color: lightgray;
   margin: 40px auto;
   border: 1px solid gray;
   padding: 20px;
-
   input {
     width: 80%;
-    height: 40px;
+    height: 50px;
+    border-radius:4px;
+    border:1px solid gray;
     font-size: larger;
   }
   button {
     width: 20%;
-    height: 35px;
+    border:1px solid black;
+    color: white;
+    border-radius:4px;
+    background-color:#430707;
+    height: 50px;
   }
 
   form {
@@ -187,8 +250,10 @@ const DIV = styled.div`
   }
 
   select {
-    width: 50%;
+    width: 80%;
     height: 30px;
+    height: 50px;
+    border-radius:4px;
     font-size: larger;
   }
 `;
