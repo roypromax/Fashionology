@@ -8,6 +8,12 @@ import ProductAdminCart from "./ProductAdminCart";
 
 const ProductAdminList = () => {
   const [ref, setRef] = useState(false);
+const [page, setPage] = useState(1)
+
+let c = false
+if(page<2){
+  c=true
+}
 
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
@@ -16,7 +22,8 @@ const ProductAdminList = () => {
 
   useEffect(() => {
     dispatch(getProducts());
-  }, [ref]);
+  }, [ref, page]);
+
 
 
   const updateRef = () => {
@@ -45,11 +52,31 @@ const ProductAdminList = () => {
             return <ProductAdminCart key={el._id} {...el} fn={updateRef} />;
           })}
       </DIV>
+      <DIVBTN>
+          <button  disabled={c} onClick={()=>{setPage(page-1) }} >Prev</button>
+          <button>{page}</button>
+          <button   disabled={c} onClick={()=>{setPage(page+1) }}>Next</button>
+        </DIVBTN>
     </DivForm>
   );
 };
 
 export default ProductAdminList;
+
+const DIVBTN = styled.div`
+margin-top:50px;
+margin-bottom: 50px;
+text-align: center;
+
+button{
+  padding: 10px 24px;
+  font-size:20px;
+  background-color: black;
+  color: white;
+  margin-left: 10px;
+  border-radius:50px;
+}
+`;
 
 const DivForm = styled.div``;
 
