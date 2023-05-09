@@ -59,7 +59,7 @@ const ProductAdminCart = ({
           <p>MainCategory: {mainCategory}</p>
           <p>SubCategory: {subCategory}</p>
           <p>Brand: {brand}</p>
-          <p>Description: {description}</p>
+          <p>Description: {description.substring(0,20)+"..."}</p>
           <button style={{ width: "30%", backgroundColor: "green" }}>
             <Link to={`/adminedit/${_id}`}>Edit</Link>
           </button>
@@ -71,7 +71,6 @@ const ProductAdminCart = ({
           </button>
         </div>
 
-   
       </DIV>
       
     </DivForm>
