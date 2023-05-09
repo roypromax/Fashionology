@@ -5,7 +5,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import axios from "axios";
 
-const url = "http://localhost:8080";
+const url = "https://sleepy-erin-sheep.cyclic.app";
 
 function Cart() {
   const [cart, setCart] = useState([]);

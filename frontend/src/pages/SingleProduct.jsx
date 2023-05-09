@@ -8,7 +8,7 @@ import Carousel from "../components/Home-Components/Carousel";
 import { Footer } from "../components/Footer";
 import { useToast } from "@chakra-ui/react";
 
-const url = "http://localhost:8080";
+const url = "https://sleepy-erin-sheep.cyclic.app";
 
 let userData = JSON.parse(localStorage.getItem("userData")) || null;
 
