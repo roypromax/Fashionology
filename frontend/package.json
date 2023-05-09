@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.19",
     "@chakra-ui/react": "^2.6.1",
     "@emotion/react": "^11.10.8",
     "@emotion/styled": "^11.10.8",
@@ -19,8 +20,10 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.1",
     "react-scripts": "5.0.1",
+    "recharts": "^2.6.0",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
+    "sass": "^1.62.1",
     "styled-components": "^5.3.10",
     "swiper": "^9.2.4",
     "web-vitals": "^2.1.4"

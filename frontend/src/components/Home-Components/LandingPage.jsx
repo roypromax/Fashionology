@@ -266,13 +266,13 @@ const Content = styled.div`
     max-width: 92%;
   margin: auto;
   height: auto;
-
+  }
   @media (max-width:720px) and (min-width: 1200px) {
     max-width: 92%;
   margin: auto;
   height: auto;
   }
-  }
+  
 `;
 // Top Div Part
 const Header = styled.div`

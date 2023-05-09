@@ -7,6 +7,8 @@ import ProductAdminList from '../components/AdminProduct/ProductAdminList'
 import ProductAdminPost from '../components/AdminProduct/ProductAdminPost'
 import Cart from './Cart'
 import ProductAdminEdit from '../components/AdminProduct/ProductAdminEdit'
+import AdminHomePage from './AdminHomePage'
+
 export const Allroutes = () => {
   return (
     <Routes>
@@ -18,6 +20,7 @@ export const Allroutes = () => {
 <Route path="/adminget" element={<ProductAdminList/>}/>
 <Route path="/adminpost" element={<ProductAdminPost/>}/>
 <Route path="/adminedit/:id" element={<ProductAdminEdit/>}/>
+<Route path="/adminhome" element={<AdminHomePage/>}/>
 <Route path="/cart" element={<Cart/>}/>
     </Routes>
   )
