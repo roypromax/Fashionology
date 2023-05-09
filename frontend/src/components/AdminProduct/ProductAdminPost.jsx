@@ -57,7 +57,7 @@ alert("Products Added Successfully")
 
       <form onSubmit={handleSubmit}>
 
-      <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'99%',  fontSize:'16px'}}>
+      <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'100%'}}>
       <span>Image :</span>
         <input
           text="text"
@@ -70,7 +70,7 @@ alert("Products Added Successfully")
         />
       </div>
 
-    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'100%',  paddingLeft:'8px',fontSize:'16px'}}>
+    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'100%', }}>
       <span>Title :</span>
         <input
           text="text"
@@ -83,9 +83,9 @@ alert("Products Added Successfully")
         />
         </div>
 
-    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'99%',  
-    paddingLeft:'2px',fontSize:'16px'}}>
-      <span>Rating :</span>
+    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'100%',  
+  }}>
+      <span>Rate:</span>
         <input
           text="number"
           value={product.rating}
@@ -96,7 +96,7 @@ alert("Products Added Successfully")
           name="rating"
         /></div>
 
-    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', paddingLeft:'8px',width:'100%',  fontSize:'16px'}}>
+    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center',width:'100%'}}>
       <span>Price :</span>
         <input
           text="number"
@@ -110,7 +110,7 @@ alert("Products Added Successfully")
 </div>
 
 <div style={{display:'flex', justifyContent:'space-around', alignItems:'center',
-paddingLeft:'9px', width:'100%',  fontSize:'16px'}}>
+ width:'100%',  }}>
       <span>Sizes :</span>
 
         <select
@@ -128,9 +128,9 @@ paddingLeft:'9px', width:'100%',  fontSize:'16px'}}>
           <option value='XS'>XS</option>
         </select>
         </div>
-    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'98%',  
-    paddingLeft:'0px',fontSize:'16px'}}>
-      <span>Quantity :</span>
+    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'100%',  
+  fontSize:'16px'}}>
+      <span>Quantity:</span>
         <input
           text="number"
           value={product.quantity}
@@ -142,7 +142,7 @@ paddingLeft:'9px', width:'100%',  fontSize:'16px'}}>
         /></div>
 
     <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'100%',  
-    paddingLeft:'16px',fontSize:'16px'}}>
+fontSize:'16px'}}>
       <span>Color :</span>
         <input
           text="text"
@@ -154,9 +154,9 @@ paddingLeft:'9px', width:'100%',  fontSize:'16px'}}>
           name="color"
         /></div>
 
-    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'95%',  
-    paddingLeft:'0px',fontSize:'16px'}}>
-      <span>MainCategory :</span>
+    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'100%',  
+  fontSize:'16px'}}>
+      <span>MainCat:</span>
         <input
           text="text"
           value={product.mainCategory}
@@ -167,9 +167,9 @@ paddingLeft:'9px', width:'100%',  fontSize:'16px'}}>
           name="mainCategory"
         /></div>
 
-    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'95%',  
-    paddingLeft:'3px',fontSize:'16px'}}>
-      <span>SubCategory :</span>
+    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'100%',  
+    fontSize:'16px'}}>
+      <span>SubCat :</span>
         <input
           text="text"
           value={product.subCategory}
@@ -181,8 +181,8 @@ paddingLeft:'9px', width:'100%',  fontSize:'16px'}}>
         />
         </div>
 
-    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'99%',  
-    paddingLeft:'20px',fontSize:'16px'}}>
+    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'100%',  
+    fontSize:'16px'}}>
       <span>Brand :</span>
         <input
           text="text"
@@ -194,9 +194,9 @@ paddingLeft:'9px', width:'100%',  fontSize:'16px'}}>
           name="brand"
         /></div>
 
-    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'96%',  
-    paddingLeft:'0px',fontSize:'16px'}}>
-      <span>Description :</span>
+    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'100%',  
+    fontSize:'16px'}}>
+      <span>Desc :</span>
         <input
           text="text"
           value={product.description}
@@ -219,7 +219,7 @@ export default ProductAdminPost;
 const DIVform = styled.div``;
 
 const DIV = styled.div`
-  width: 900px;
+  width: 90%;
   height: auto;
   padding-top:10px;
   background-color: lightgray;

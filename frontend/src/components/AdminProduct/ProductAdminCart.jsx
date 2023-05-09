@@ -70,7 +70,10 @@ const ProductAdminCart = ({
             DELETE
           </button>
         </div>
+
+   
       </DIV>
+      
     </DivForm>
   );
 };
@@ -84,7 +87,6 @@ const DIV = styled.div`
   padding: 10px;
   height: auto;
   width: 300px;
-
 
   button {
     border-radius: 2px;
