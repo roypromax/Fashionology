@@ -6,7 +6,7 @@ import ProductCard from '../components/ProductCard';
 import { Box, Button, Center, Flex, Grid, Text } from '@chakra-ui/react';
 import { Footer } from '../components/Footer';
 import { Navbar } from '../components/Navbar';
-
+import { Spinner } from '@chakra-ui/react'
 
 
 export const Productpage = () => {
@@ -23,43 +23,58 @@ if(page<2){
     const [products, setProducts] = React.useState([]);
     const [order,setorder]=React.useState("")
     const [subCategory,setSubCategory]=React.useState([])
+    const [loading,setLoading] = useState(true)
+    
           const handleSort= (e) =>{
       setorder(e.target.value)
           }
          const handlecategory= (e) =>{
       setSubCategory(e.target.value)
      }
-
+     
     const object={}
-
+    
     React.useEffect(() => {
-        axios.get(`http://localhost:8080/products?mainCategory=${category}&limit=5&page=${page}&order=${order}&subCategory=${subCategory}&minRating=${rating}`).then((response) => {
+      
+      try {
+        axios.get(`http://localhost:8080/products?mainCategory=${category}&limit=6&page=${page}&order=${order}&subCategory=${subCategory}&minRating=${rating}`).then((response) => {
             
           setProducts(response.data);
-         
+          setLoading(false)
         });
-      }, [page,order,subCategory,rating]);
+      } catch (error) {
+        console.log(error)
+      }
+          
+      }, [loading,category,page,order,subCategory,rating]);
     
       React.useEffect(() => {
-        axios.get(`http://localhost:8080/products?mainCategory=${category}`).then((response) => {
+        try {
+          axios.get(`http://localhost:8080/products?mainCategory=${category}`).then((response) => {
             
          
-          for(let i=0 ; i<response.data.length-1; i++){
+          for(let i=0 ; i<=response.data.length-1; i++){
             if(object[response.data[i].subCategory]===undefined){
               object[response.data[i].subCategory]=1
     }else{
      object[response.data[i].subCategory]++
   }
  }
-          console.log(object)
+          // console.log(object)
     for(let key in object){
        arr.push(key)
         }
         setAb(arr)
-     console.log(arr)
+    //  console.log(arr)
             
         });
-      }, []);
+        
+        
+        } catch (error) {
+          console.log(error)
+        }
+        
+      }, [subCategory]);
 return (
     <>
     <Navbar/>
@@ -92,8 +107,9 @@ return (
 <Flex direction={'column'}  width={'100%'}>
 <Text mb={'20px'} mt={'20px'} fontSize={{base:'8px',md:'10px',lg:'15px'}} fontWeight='bold'>Choose Category</Text>
 <Box onChange={handlecategory} display={{base:'flex',md:'flex',lg:'flex'}} flexDirection={'column'} >
-{ab.map((el)=>(
-  <Box fontSize={{base:'8px',md:'10px',lg:'15px'}} >
+{(loading)?<Spinner />:
+ab.map((el)=>(
+  <Box fontSize={{base:'8px',md:'10px',lg:'15px'}} key={el}>
   
     <input type="radio" name="subcategory" value={el}   defaultChecked={order==={el}}/>
     {(el)?<label>{el}</label>:<label>All</label>}
@@ -167,10 +183,17 @@ return (
   <Flex flexDirection={'column'}  width={'80%'}>
        
    
-        
-   <Grid templateColumns={{ base: 'repeat(1, 1fr)',  md: 'repeat(2, 1fr)',lg:'repeat(3, 1fr)'} } columnGap={20} rowGap={10} mt={"60px"} >
+        {(loading)?  <Spinner
+        m={'auto'}
+  thickness='4px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='blue.500'
+  size='xl'
+/> : <Grid templateColumns={{ base: 'repeat(1, 1fr)',  md: 'repeat(2, 1fr)',lg:'repeat(3, 1fr)'} } columnGap={20} rowGap={10} mt={"60px"} >
       {products.map((el)=>(<ProductCard key={el.id} _id={el._id} name={el.name} images={el.images} price={el.price}/>))}
-   </Grid>
+   </Grid>}
+   
    
       
     
