@@ -28,7 +28,7 @@ import { SlArrowDown, SlGlobeAlt } from "react-icons/sl";
 import { BiSearch, BiUser } from "react-icons/bi";
 import { BsHandbag } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Keyboard, Mousewheel } from "swiper";
@@ -44,8 +44,9 @@ export const Navbar = () => {
     lg: true,
   });
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
 
-  const { isAuth, userName } = useSelector((store) => store.loginReducer);
+  const { userName } = useSelector((store) => store.loginReducer);
 
   return (
     <div
@@ -163,7 +164,7 @@ export const Navbar = () => {
                 </MenuGroup>
                 <MenuDivider />
                 <MenuGroup title="">
-                  <RegisterButton isAuth={isAuth} />
+                  <RegisterButton userName={userName} />
 
                   <LoginButton
                     isOpen={isOpen}
@@ -195,10 +196,12 @@ export const Navbar = () => {
                     " rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
                 }}
               >
-                <div style={{ width: "200px" }}>
-                  {" "}
-                  <Image src={fashionoLogy} />
-                </div>
+                <Link to={"/"}>
+                  <div style={{ width: "200px" }}>
+                    {" "}
+                    <Image src={fashionoLogy} />
+                  </div>
+                </Link>
               </Tab>
               <Tab
                 style={{
@@ -252,7 +255,15 @@ export const Navbar = () => {
               <Button
                 _hover={{ color: "black" }}
                 style={{ fontSize: "25px", background: "none" }}
+                onClick={() => {
+                  if (!userName) {
+                    onOpen();
+                  } else {
+                    navigate("/cart");
+                  }
+                }}
               >
+                {" "}
                 <BsHandbag style={{ color: "rgb(22,122,146)" }} />
               </Button>
             </div>
@@ -311,7 +322,15 @@ export const Navbar = () => {
                 </Link>
               </Tab>
               <Tab fontSize={"small"}>
-                <Link to=""> Accessories</Link>
+                <Link
+                  to={{
+                    pathname: "/productpage",
+                    search: "?category=accessories",
+                  }}
+                >
+                  {" "}
+                  Accessories
+                </Link>
               </Tab>
               <Tab fontSize={"small"}>
                 <Link> Home & Furniture</Link>
@@ -320,7 +339,7 @@ export const Navbar = () => {
                 <Link
                   to={{
                     pathname: "/productpage",
-                    search: "?category=Beauty&Wellness",
+                    search: "?category=beauty & wellness",
                   }}
                 >
                   {" "}

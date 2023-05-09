@@ -78,7 +78,7 @@ export const Register = ({ onClose }) => {
         required
       />
 
-      <Button onClick={handleRegister} colorScheme={"#d88c34;"}>
+      <Button onClick={handleRegister} colorScheme={"#4B5666;"}>
         Register
       </Button>
     </Box>
