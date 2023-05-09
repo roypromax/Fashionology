@@ -23,13 +23,13 @@ export const Checkout = () => {
   let userData = JSON.parse(localStorage.getItem("userData")) || null;
   const handleCheckout = () => {
     localStorage.removeItem("cartData");
-    window.location.href = "/";
     axios.delete(`${url}cart/delete`, {
       headers: {
         Authorization: `Bearer ${userData?.token}`,
         "Content-Type": "application/json",
       },
     });
+    window.location.href = "/";
   };
 
   return (

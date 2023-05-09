@@ -10,7 +10,7 @@ import { useToast } from "@chakra-ui/react";
 
 const url = "https://sleepy-erin-sheep.cyclic.app";
 
-let userData = JSON.parse(localStorage.getItem("userData")) || null;
+
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -41,6 +41,7 @@ const SingleProduct = () => {
   };
 
   const handleAddtoCart = () => {
+    let userData = JSON.parse(localStorage.getItem("userData")) || null;
     if (selectedSize === null) {
       toast({
         title: "Fail.",
