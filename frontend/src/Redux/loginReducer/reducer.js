@@ -2,6 +2,7 @@ import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS } from "./actionTypes";
 
 function getInitialState() {
   const userData = JSON.parse(localStorage.getItem("userData"));
+  console.log(userData,"reducer")
   if (userData) {
     return {
       isLoading: false,
@@ -9,7 +10,7 @@ function getInitialState() {
       isError: false,
       token: userData.token,
       userName: userData.userName,
-      isAuth: false,
+      userRole:userData.userRole ,
     };
   } else {
     return {
@@ -18,7 +19,7 @@ function getInitialState() {
       isError: false,
       token: "",
       userName: "",
-      isAuth: false,
+      userRole: "user",
     };
   }
 }

@@ -37,6 +37,11 @@ import fashionoLogy from "../assets/fashionology.jpeg"
 export default function Nav() {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const handleLogout = () => {
+    localStorage.removeItem("userData");
+    localStorage.removeItem("cartData")
+    window.location.href = "/";
+  };
   return (
     <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
@@ -81,7 +86,7 @@ export default function Nav() {
                   <MenuDivider />
                   <MenuItem>Your Servers</MenuItem>
                   <MenuItem>Account Settings</MenuItem>
-                  <MenuItem>Logout</MenuItem>
+                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
                 </MenuList>
               </Menu>
             </Stack>

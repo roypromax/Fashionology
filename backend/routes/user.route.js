@@ -42,7 +42,7 @@ userRouter.post("/login",async(req,res)=>{
                 
             }else{
                 const token = jwt.sign({userId:user._id,userName:user.name,userRole:user.role},process.env.jwtSecret);
-                res.status(200).json({msg:"Login Successful",token:token,user:user.name});
+                res.status(200).json({msg:"Login Successful",token:token,user:user.name,userRole:user.role});
             }
         });
     }
