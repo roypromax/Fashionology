@@ -54,7 +54,7 @@ export const Checkout = () => {
         isClosable: true,
       });
     } else {
-      
+      console.log("delete1");
       axios
         .delete(`${url}cart/delete`, {
           headers: {
@@ -63,7 +63,8 @@ export const Checkout = () => {
           },
         })
         .then((res) => {
-          console.log(res);
+          console.log(res, "delete");
+          window.location.href = "/";
         })
         .catch((err) => {
           console.log(err);
@@ -78,7 +79,7 @@ export const Checkout = () => {
         duration: 9000,
         isClosable: true,
       });
-      window.location.href = "/";
+     
     }
   };
 
