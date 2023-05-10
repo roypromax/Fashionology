@@ -52,7 +52,7 @@ const ProductAdminEdit = () => {
     axios
       .get(`https://sleepy-erin-sheep.cyclic.app/products/${id}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setData(res.data);
       })
       .catch((err) => console.log(err));

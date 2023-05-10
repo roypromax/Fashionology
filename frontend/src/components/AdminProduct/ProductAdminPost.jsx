@@ -35,7 +35,7 @@ const ProductAdminPost = () => {
   let userData = JSON.parse(localStorage.getItem("userData")) || []
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(product, userData.token)
+    // console.log(product, userData.token)
     axios.post("https://sleepy-erin-sheep.cyclic.app/products/add", product, {
          headers: { 
            "Content-Type": "application/json",

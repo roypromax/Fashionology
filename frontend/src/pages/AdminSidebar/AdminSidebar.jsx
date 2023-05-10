@@ -31,7 +31,7 @@ const AdminSidebar = () => {
           </Link>
 
           <p className="title">LISTS</p>
-          <Link to="/users" style={{ textDecoration: "none" }}>
+          <Link to="/useradmin" style={{ textDecoration: "none" }}>
             <li>
               <AiOutlineUser className="icon" />
               <span>Users</span>

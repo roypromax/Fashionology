@@ -8,7 +8,7 @@ const TotalWeightProducts = () => {
 
   const AllProducts = () => {
     axios.get("https://sleepy-erin-sheep.cyclic.app/products").then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setProduct(res.data);
     });
   };
@@ -16,6 +16,7 @@ const TotalWeightProducts = () => {
   useEffect(() => {
     AllProducts();
   }, []);
+  
   return (
     <div className="widget">
       <div className="left">
