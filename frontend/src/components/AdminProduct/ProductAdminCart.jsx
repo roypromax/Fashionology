@@ -31,7 +31,7 @@ const ProductAdminCart = ({
         },
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         fn();
       })
       .catch((err) => console.log(err));

@@ -12,7 +12,7 @@ let userData = JSON.parse(localStorage.getItem("userData")) || []
 
 export const addProducts = () => (dispatch) => {
           dispatch({type:PRODUCT_REQUEST})
-          console.log(userData);
+         //  console.log(userData);
       axios.post("https://sleepy-erin-sheep.cyclic.app/products/add", {
          headers: {
            "Content-Type": "application/json",
@@ -49,7 +49,7 @@ export const editProduct = (dataObj, id) => (dispatch) => {
          Authorization:`Bearer ${userData.token}` 
 }
    }).then((res)=>{
-      console.log(res);
+      // console.log(res);
       dispatch({type: PATCH_PRODUCT_SUCCESS})
    }).catch(()=>{
       dispatch({type: PRODUCT_FAILURE})

@@ -11,6 +11,7 @@ import { Productpage } from "./Productpage";
 import SingleProduct from "./SingleProduct";
 
 import { PrivateRoute } from "../components/PrivateRoute";
+import UsersAdmin from '..//components/AdminProduct/UsersAdmin'
 
 export const Allroutes = () => {
   return (
@@ -25,6 +26,7 @@ export const Allroutes = () => {
       <Route path="/productpage/:id" element={<SingleProduct />} />
       <Route path="/adminget" element={<ProductAdminList />} />
       <Route path="/adminpost" element={<ProductAdminPost />} />
+      <Route path="/useradmin" element={<UsersAdmin/>} />
       <Route
         path="/cart"
         element={
