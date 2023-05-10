@@ -54,14 +54,20 @@ export const Checkout = () => {
         isClosable: true,
       });
     } else {
-      axios.delete(`${url}cart/delete`, {
-        headers: {
-          Authorization: `Bearer ${userData?.token}`,
-          "Content-Type": "application/json",
-        }
-      }).then((res)=>{
-        console.log(res)
-      }).catch()
+      
+      axios
+        .delete(`${url}cart/delete`, {
+          headers: {
+            Authorization: `Bearer ${userData?.token}`,
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       localStorage.removeItem("cartData");
 
       toast({
