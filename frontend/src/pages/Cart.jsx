@@ -25,7 +25,7 @@ function Cart() {
         console.log(res.data);
         setCart(res.data);
       });
-  }, []);
+  }, [cart]);
 
   function totalPrice() {
     let total = 0;
