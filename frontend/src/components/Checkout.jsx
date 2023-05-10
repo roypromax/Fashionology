@@ -54,21 +54,32 @@ export const Checkout = () => {
         isClosable: true,
       });
     } else {
+      console.log("delete1");
+      axios
+        .delete(`${url}cart/delete`, {
+          headers: {
+            Authorization: `Bearer ${userData?.token}`,
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          console.log(res, "delete");
+          window.location.href = "/";
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      localStorage.removeItem("cartData");
+
       toast({
+        position: "top",
         description:
           "Your order has been  placed.Thank you for shopping with us",
         status: "success",
         duration: 9000,
         isClosable: true,
       });
-      localStorage.removeItem("cartData");
-      axios.delete(`${url}cart/delete`, {
-        headers: {
-          Authorization: `Bearer ${userData?.token}`,
-          "Content-Type": "application/json",
-        },
-      });
-      window.location.href = "/";
+     
     }
   };
 
