@@ -91,7 +91,7 @@ function Cart() {
     return (
       <>
         <Navbar />
-        <EmptyCart/>
+        <EmptyCart />
         <Footer />
       </>
     );
