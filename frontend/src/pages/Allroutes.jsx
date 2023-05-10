@@ -11,7 +11,7 @@ import { Productpage } from "./Productpage";
 import SingleProduct from "./SingleProduct";
 
 import { PrivateRoute } from "../components/PrivateRoute";
-import UsersAdmin from "../components/AdminProduct/UsersAdmin";
+import UsersAdmin from '..//components/AdminProduct/UsersAdmin'
 
 export const Allroutes = () => {
   return (
