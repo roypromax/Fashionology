@@ -2,6 +2,8 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+const {auth} = require("../middlewares/auth.middleware");
+
 const {UserModel} = require("../models/user.model");
 
 const userRouter = express.Router();
@@ -51,5 +53,16 @@ userRouter.post("/login",async(req,res)=>{
         res.status(400).json({msg:"Error logging in"});
   }
 });
+
+userRouter.get("/all",auth,async(req,res)=>{
+
+    try {
+        let users = await UserModel.find({role:"user"});
+        res.status(200).json(users);
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({err:error});
+    }
+})
 
 module.exports = {userRouter};
