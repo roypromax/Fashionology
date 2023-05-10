@@ -1,0 +1,20 @@
+.main{
+    width:100vW;
+    margin: auto;
+    height: 100vh;
+    background-color: #F5F5F5;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.img{
+    margin: auto;
+}
+
+.button{
+    background-color: #4b5666;
+    font-size: 16px;
+    color: #FFFFFF;
+    padding: 10px;
+    border: 1px solid #4b5666;
+}

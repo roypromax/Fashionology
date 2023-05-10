@@ -4,6 +4,7 @@ import styles from "./Cart.module.css";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import axios from "axios";
+import { EmptyCart } from "../components/EmptyCart";
 
 const url = "https://sleepy-erin-sheep.cyclic.app";
 
@@ -90,6 +91,7 @@ function Cart() {
     return (
       <>
         <Navbar />
+        <EmptyCart/>
         <Footer />
       </>
     );
