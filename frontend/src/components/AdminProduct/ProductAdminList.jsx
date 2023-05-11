@@ -4,27 +4,25 @@ import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { getProducts } from "../../Redux/productsReducers/action";
 import Nav from "../../pages/AdminNavbar";
+import AdminSidebar from "../../pages/AdminSidebar/AdminSidebar";
 import ProductAdminCart from "./ProductAdminCart";
 import Productpagination from "./Productpagination";
-import axios from "axios";
 
 const ProductAdminList = () => {
   const [ref, setRef] = useState(false);
   const [page, setPage] = useState(1);
- const [order, setOrder] = useState("")
-
+  const [order, setOrder] = useState("");
 
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  let limit = 4;
+  let limit = 8;
 
   const [total, setTotal] = useState(0);
 
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
-
 
   const { products } = useSelector((store) => store.productsReducers);
 
@@ -37,47 +35,53 @@ const ProductAdminList = () => {
     setRef((prev) => !prev);
   };
 
-  
   const paginate = (val) => {
-    setPage(page+val)
-  }
-
+    setPage(page + val);
+  };
 
   return (
     <DivForm>
       <Nav />
-      <DIVSEL>
-      <select onChange={(e) => setOrder(e.target.value)}>
-        <option value='desc'>High to low</option>
-        <option value='asc'>Low to High</option>
-      </select>
-     </DIVSEL>
-      <h1
-        style={{
-          color: "#430707",
-          fontSize: "30px",
-          fontWeight: "bold",
-          textAlign: "center",
-          margin: "20px 20px",
-        }}
-      >
-        All Products Data
-      </h1>
+      <DIVSidebar>
+  
+            <h1
+              style={{
+                color: "#430707",
+                fontSize: "30px",
+                fontWeight: "bold",
+                textAlign: "center",
+                margin: "20px 20px",
+              }}
+            >
+              All Products Data
+            </h1>
+    
 
-      <DIV>
-        {products.length > 0 &&
-          products.map((el) => {
-            return <ProductAdminCart key={el._id} {...el} fn={updateRef} />;
-          })}
-      </DIV>
 
+         
+
+          <DIVSEL>
+            <select onChange={(e) => setOrder(e.target.value)}>
+              <option value="desc">High to low</option>
+              <option value="asc">Low to High</option>
+            </select>
+          </DIVSEL>
+
+          <DIV>
+            {products.length > 0 &&
+              products.map((el) => {
+                return <ProductAdminCart key={el._id} {...el} fn={updateRef} />;
+              })}
+       
+        </DIV>
+      </DIVSidebar>
       <div>
-      <Productpagination page={page} paginate={paginate} 
-      // lastPage={lastPage}
-
-      />
-     </div>
-     
+        <Productpagination
+          page={page}
+          paginate={paginate}
+          // lastPage={lastPage}
+        />
+      </div>
     </DivForm>
   );
 };
@@ -131,13 +135,16 @@ const DIV = styled.div`
 `;
 
 const DIVSEL = styled.div`
-width:100%;
-height:100px;
-text-align: center;
-margin-top: 50px;
-select{
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  margin-top: 50px;
+  select {
     width: 50%;
     height: 50px;
     border: 1px solid black;
-}
-`
+  }
+`;
+const DIVSidebar = styled.div`
+
+`;

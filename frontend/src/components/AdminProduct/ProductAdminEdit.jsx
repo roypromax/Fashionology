@@ -62,6 +62,7 @@ const ProductAdminEdit = () => {
   return (
     <DIVform style={{ height: "auto", width: "100%",  textAlign:'center'}}>
        <Nav/>
+       
       <h3 style={{ color: "#430707", fontSize: "20px",marginTop:'20px'}}>Edit Products: {id}</h3>
       <h2 style={{ color: "red", fontSize: "30px", fontWeight: 'bold' }}>
         {success && "Product Edit Successfully"}
