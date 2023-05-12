@@ -29,7 +29,7 @@ import AdminSidebar from "../../pages/AdminSidebar/AdminSidebar";
 
   useEffect(() => {
     getUser();
-  }, []);
+  }, [user]);
 
   //https://sleepy-erin-sheep.cyclic.app/users/delete/${id}
 
