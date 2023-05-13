@@ -62,5 +62,10 @@ To begin with the project, you need to clone the repository onto your device.
 
 ## Deployed Link :- https://fashionology.vercel.app/
 ## screenshot 
-![Image](/)
+
+## Home Page
+![Image](/frontend/public/Screenshot%202023-05-13%20131716.png)
+
+## Product page
+![Image](/frontend/public/Screenshot%202023-05-13%20131742.png)
 
