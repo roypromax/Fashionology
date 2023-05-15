@@ -16,8 +16,6 @@ import {
   Tab,
   TabIndicator,
   TabList,
-  // TabPanel,
-  // TabPanels,
   Tabs,
   useBreakpointValue,
   useDisclosure,
