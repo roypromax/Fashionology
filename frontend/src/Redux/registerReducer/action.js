@@ -33,7 +33,7 @@ export const SignUp =
     } else {
       dispatch({ type: SignUp_REQUEST });
       axios
-        .post("https://sleepy-erin-sheep.cyclic.app/users/register", data)
+        .post("https://agile-sweatshirt-worm.cyclic.app/users/register", data)
         .then((res) => {
           console.log(res);
           dispatch({ type: SignUp_SUCCESS, payload: data });

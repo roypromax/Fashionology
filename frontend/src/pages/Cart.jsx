@@ -6,7 +6,7 @@ import { Footer } from "../components/Footer";
 import axios from "axios";
 import { EmptyCart } from "../components/EmptyCart";
 
-const url = "https://sleepy-erin-sheep.cyclic.app";
+const url = "https://agile-sweatshirt-worm.cyclic.app";
 
 function Cart() {
   const [cart, setCart] = useState([]);

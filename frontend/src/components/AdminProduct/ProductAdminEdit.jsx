@@ -50,7 +50,7 @@ const ProductAdminEdit = () => {
 
   useEffect(() => {
     axios
-      .get(`https://sleepy-erin-sheep.cyclic.app/products/${id}`)
+      .get(`https://agile-sweatshirt-worm.cyclic.app/products/${id}`)
       .then((res) => {
         // console.log(res.data);
         setData(res.data);

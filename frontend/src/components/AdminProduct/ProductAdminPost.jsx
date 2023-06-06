@@ -38,7 +38,7 @@ const ProductAdminPost = () => {
     e.preventDefault();
     // console.log(product, userData.token)
     axios
-      .post("https://sleepy-erin-sheep.cyclic.app/products/add", product, {
+      .post("https://agile-sweatshirt-worm.cyclic.app/products/add", product, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${userData.token}`,

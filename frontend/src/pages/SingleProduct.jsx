@@ -8,7 +8,7 @@ import Carousel from "../components/Home-Components/Carousel";
 import { Footer } from "../components/Footer";
 import { useToast } from "@chakra-ui/react";
 
-const url = "https://sleepy-erin-sheep.cyclic.app";
+const url = "https://agile-sweatshirt-worm.cyclic.app";
 
 
 

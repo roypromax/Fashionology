@@ -7,7 +7,7 @@ const TotalWeightProducts = () => {
   const [product, setProduct] = useState([]);
 
   const AllProducts = () => {
-    axios.get("https://sleepy-erin-sheep.cyclic.app/products").then((res) => {
+    axios.get("https://agile-sweatshirt-worm.cyclic.app/products").then((res) => {
       // console.log(res.data);
       setProduct(res.data);
     });

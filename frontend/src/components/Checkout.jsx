@@ -18,7 +18,7 @@ import { FaCreditCard, FaMapMarkerAlt } from "react-icons/fa";
 import { HiOutlineCurrencyDollar } from "react-icons/hi";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 
-const url = "https://sleepy-erin-sheep.cyclic.app/";
+const url = "https://agile-sweatshirt-worm.cyclic.app/";
 
 export const Checkout = () => {
   let cartData = JSON.parse(localStorage.getItem("cartData")) || null;

@@ -36,7 +36,7 @@ if(page<2){
     React.useEffect(() => {
       
       try {
-        axios.get(`https://sleepy-erin-sheep.cyclic.app/products?mainCategory=${category}&limit=6&page=${page}&order=${order}&subCategory=${subCategory}&minRating=${rating}`).then((response) => {
+        axios.get(`https://agile-sweatshirt-worm.cyclic.app/products?mainCategory=${category}&limit=6&page=${page}&order=${order}&subCategory=${subCategory}&minRating=${rating}`).then((response) => {
             
           setProducts(response.data);
           setLoading(false);
@@ -50,7 +50,7 @@ if(page<2){
     
       React.useEffect(() => {
         try {
-          axios.get(`https://sleepy-erin-sheep.cyclic.app/products?mainCategory=${category}`).then((response) => {
+          axios.get(`https://agile-sweatshirt-worm.cyclic.app/products?mainCategory=${category}`).then((response) => {
             
          
           for(let i=0 ; i<=response.data.length-1; i++){
