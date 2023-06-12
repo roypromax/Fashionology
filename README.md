@@ -24,7 +24,7 @@ To begin with the project, you need to clone the repository onto your device.
 
 ### cyclic server
 
-- https://sleepy-erin-sheep.cyclic.app
+- https://agile-sweatshirt-worm.cyclic.app
 - MongoDB
 - Node.js
 
