@@ -31,7 +31,7 @@ To begin with the project, you need to clone the repository onto your device.
 ## Pages
 
 - Home Page
-- SignUp and Login
+- Signup and Login
 - Products Page
 - Product Description
 - Cart Page
@@ -46,7 +46,7 @@ To begin with the project, you need to clone the repository onto your device.
 - Product Description Page.
 - Cart Page - Add and delete from cart functionality.
 - Payment and Checkout Page.
-- Used Redux for centralizing logic and manage state.
+- Used Redux for centralizing logic and managing state.
 
 ## Functionalities
 
@@ -59,10 +59,10 @@ To begin with the project, you need to clone the repository onto your device.
 - Admin functionality for CRUD operations.
 - Payment.
 
-## Features to be Implemented in Future
+## Features to be implemented in the Future
 
 - Wishlist Page and functionality.
-- Order management on admin side.
+- Order management on the admin side.
 
 ## Contribution
 
